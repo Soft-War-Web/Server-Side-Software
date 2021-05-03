@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8U1Zboad8xQMFNUE3vRSfq7FWKgMkabKx5IGGE7TdQZrWEPxhEohbe9sHq3iW6EWqohjJUfPGdcfejjNlca0WA==",
+  "dgSpecHash": "FV9HnbXnBczbUme3DXQAEbUPLz27bZG5fiEXMCbb/mAh/hsvU0/B3EBDirNrnMqF5RqK1iVYt6uXjB5B7UHvUg==",
   "success": true,
-  "projectFilePath": "D:\\Proyecto Web\\Server-Side-Software_Web\\NutricareApp.Entities\\NutricareApp.Entities.csproj",
+  "projectFilePath": "D:\\Projects\\C#\\Server-Side-Software\\NutricareApp.Entities\\NutricareApp.Entities.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
