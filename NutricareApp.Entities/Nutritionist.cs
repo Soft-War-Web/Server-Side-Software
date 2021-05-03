@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace NutricareApp.Entities
 {
-    public class Client
+    public class Nutritionist
     {
-        public int ClientId { get; set; }
+        public int NutritionistId { get; set; }
 
         [Required(ErrorMessage = "Debe incluir el username del cliente")]
         [StringLength(16, MinimumLength = 6, ErrorMessage = "El username del cliente debe tener de 6 a 16 caracteres")]
@@ -30,6 +30,10 @@ namespace NutricareApp.Entities
         [Required(ErrorMessage = "Debe incluir el email del cliente")]
         [StringLength(50, ErrorMessage = "El email del cliente debe tener un máximo de 50 caracteres")]
         public string Email { get; set; }
+
+        [Required(ErrorMessage = "Debe incluir el número del Colegio de Nutricionistas del Perú (CNP) del nutricionista")]
+        //[StringLength(6, MinimumLength =6 , ErrorMessage = "El número del Colegio de Nutricionistas del Perú (CNP) del nutricionista debe ser de 6 caracteres")]
+        public int CnpNumber { get; set; }
 
         [Required(ErrorMessage = "Debe incluir la fecha de creación del cliente")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]

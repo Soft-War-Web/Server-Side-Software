@@ -20,23 +20,23 @@ namespace NutricareApp.Data.Mapping
             builder.Property(c => c.Username)
                 .HasColumnName("username")
                 .HasMaxLength(16)
-                .IsUnicode(true);
+                .IsUnicode(false);
             builder.Property(c => c.Email)
                 .HasColumnName("email")
                 .HasMaxLength(50)
-                .IsUnicode(true);
+                .IsUnicode(false);
             builder.Property(c => c.FirstName)
                 .HasColumnName("firstname")
                 .HasMaxLength(50)
-                .IsUnicode(true);
+                .IsUnicode(false);
             builder.Property(c => c.LastName)
                 .HasColumnName("lastname")
                 .HasMaxLength(50)
-                .IsUnicode(true);
+                .IsUnicode(false);
             builder.Property(c => c.Password)
                 .HasColumnName("password")
                 .HasMaxLength(60)
-                .IsUnicode(true);
+                .IsUnicode(false);
             builder.Property(c => c.CreatedAt)
                 .HasColumnName("created_at");
         }
