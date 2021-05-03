@@ -22,3 +22,15 @@ C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Entities\obj
 C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Entities\obj\Debug\net5.0\NutricareApp.Entities.dll
 C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Entities\obj\Debug\net5.0\ref\NutricareApp.Entities.dll
 C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Entities\obj\Debug\net5.0\NutricareApp.Entities.pdb
+D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Entities\bin\Debug\net5.0\NutricareApp.Entities.deps.json
+D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Entities\bin\Debug\net5.0\NutricareApp.Entities.dll
+D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Entities\bin\Debug\net5.0\ref\NutricareApp.Entities.dll
+D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Entities\bin\Debug\net5.0\NutricareApp.Entities.pdb
+D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Entities\obj\Debug\net5.0\NutricareApp.Entities.csprojAssemblyReference.cache
+D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Entities\obj\Debug\net5.0\NutricareApp.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Entities\obj\Debug\net5.0\NutricareApp.Entities.AssemblyInfoInputs.cache
+D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Entities\obj\Debug\net5.0\NutricareApp.Entities.AssemblyInfo.cs
+D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Entities\obj\Debug\net5.0\NutricareApp.Entities.csproj.CoreCompileInputs.cache
+D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Entities\obj\Debug\net5.0\NutricareApp.Entities.dll
+D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Entities\obj\Debug\net5.0\ref\NutricareApp.Entities.dll
+D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Entities\obj\Debug\net5.0\NutricareApp.Entities.pdb
