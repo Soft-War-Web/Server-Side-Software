@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9P50z5d2yO2xhz3/ejdZnGmGsxdv4aCJeG5tFxxnqCdFjRAodqjI8ykHfLZhXBJME6wadetXxh9k4TViYMj8Dg==",
+  "dgSpecHash": "vf8pT9f9NJtTWWKCVJ48uypxSKpCeJEDQ0T1QrLjoYZTPNOjK358arZhDJk3dp+7W0YBDn5xf4ibXQuKmHDunw==",
   "success": true,
-  "projectFilePath": "D:\\Proyecto Web\\Server-Side-Software-Web\\NutricareApp.Web\\NutricareApp.Web.csproj",
+  "projectFilePath": "D:\\Proyecto Web\\Server-Side-Software_Web\\NutricareApp.Web\\NutricareApp.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Windows\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Windows\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

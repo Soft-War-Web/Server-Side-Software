@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4v/jrR4X2/HOXajOO5oDzgbuW4EeGoa4N3yJ66s/Ge8/rRVldYFAjdFcDQRUeM9rYv2F61Us1mWcQO5SCfvJig==",
+  "dgSpecHash": "4/PrivEahQP0G/3WBSP0a0TFPkwWaVgiBej/ALkv4G9dkP3rsNepL3VROGreLOzCaaHTGKHLwS90+pLjsXB5Ow==",
   "success": true,
-  "projectFilePath": "D:\\Proyecto Web\\Server-Side-Software-Web\\NutricareApp.Data\\NutricareApp.Data.csproj",
+  "projectFilePath": "D:\\Proyecto Web\\Server-Side-Software_Web\\NutricareApp.Data\\NutricareApp.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Windows\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Windows\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
