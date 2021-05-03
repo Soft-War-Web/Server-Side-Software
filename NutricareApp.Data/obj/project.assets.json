@@ -5812,19 +5812,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Windows\\.nuget\\packages\\": {}
+    "C:\\Users\\JOSUE\\.nuget\\packages\\": {},
+    "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Proyecto Web\\Server-Side-Software_Web\\NutricareApp.Data\\NutricareApp.Data.csproj",
+      "projectUniqueName": "D:\\Projects\\C#\\Server-Side-Software\\NutricareApp.Data\\NutricareApp.Data.csproj",
       "projectName": "NutricareApp.Data",
-      "projectPath": "D:\\Proyecto Web\\Server-Side-Software_Web\\NutricareApp.Data\\NutricareApp.Data.csproj",
-      "packagesPath": "C:\\Users\\Windows\\.nuget\\packages\\",
-      "outputPath": "D:\\Proyecto Web\\Server-Side-Software_Web\\NutricareApp.Data\\obj\\",
+      "projectPath": "D:\\Projects\\C#\\Server-Side-Software\\NutricareApp.Data\\NutricareApp.Data.csproj",
+      "packagesPath": "C:\\Users\\JOSUE\\.nuget\\packages\\",
+      "outputPath": "D:\\Projects\\C#\\Server-Side-Software\\NutricareApp.Data\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Windows\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\JOSUE\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -5838,8 +5843,8 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\Proyecto Web\\Server-Side-Software_Web\\NutricareApp.Entities\\NutricareApp.Entities.csproj": {
-              "projectPath": "D:\\Proyecto Web\\Server-Side-Software_Web\\NutricareApp.Entities\\NutricareApp.Entities.csproj"
+            "D:\\Projects\\C#\\Server-Side-Software\\NutricareApp.Entities\\NutricareApp.Entities.csproj": {
+              "projectPath": "D:\\Projects\\C#\\Server-Side-Software\\NutricareApp.Entities\\NutricareApp.Entities.csproj"
             }
           }
         }
