@@ -34,21 +34,3 @@ C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\obj\Deb
 C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\ref\NutricareApp.Data.dll
 C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.pdb
 C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.genruntimeconfig.cache
-D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\NutricareApp.Data.deps.json
-D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\NutricareApp.Data.runtimeconfig.json
-D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\NutricareApp.Data.runtimeconfig.dev.json
-D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\NutricareApp.Data.dll
-D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\ref\NutricareApp.Data.dll
-D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\NutricareApp.Data.pdb
-D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\NutricareApp.Entities.dll
-D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\NutricareApp.Entities.pdb
-D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.csprojAssemblyReference.cache
-D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.GeneratedMSBuildEditorConfig.editorconfig
-D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.AssemblyInfoInputs.cache
-D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.AssemblyInfo.cs
-D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.csproj.CoreCompileInputs.cache
-D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.csproj.CopyComplete
-D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.dll
-D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\ref\NutricareApp.Data.dll
-D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.pdb
-D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.genruntimeconfig.cache
