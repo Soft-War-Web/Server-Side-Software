@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\C#\\Server-Side-Software\\NutricareApp.Entities\\NutricareApp.Entities.csproj": {}
+    "C:\\Users\\elmoe\\Source\\Repos\\Server-Side-Software\\NutricareApp.Entities\\NutricareApp.Entities.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\C#\\Server-Side-Software\\NutricareApp.Entities\\NutricareApp.Entities.csproj": {
+    "C:\\Users\\elmoe\\Source\\Repos\\Server-Side-Software\\NutricareApp.Entities\\NutricareApp.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\C#\\Server-Side-Software\\NutricareApp.Entities\\NutricareApp.Entities.csproj",
+        "projectUniqueName": "C:\\Users\\elmoe\\Source\\Repos\\Server-Side-Software\\NutricareApp.Entities\\NutricareApp.Entities.csproj",
         "projectName": "NutricareApp.Entities",
-        "projectPath": "D:\\Projects\\C#\\Server-Side-Software\\NutricareApp.Entities\\NutricareApp.Entities.csproj",
-        "packagesPath": "C:\\Users\\JOSUE\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\C#\\Server-Side-Software\\NutricareApp.Entities\\obj\\",
+        "projectPath": "C:\\Users\\elmoe\\Source\\Repos\\Server-Side-Software\\NutricareApp.Entities\\NutricareApp.Entities.csproj",
+        "packagesPath": "C:\\Users\\elmoe\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\elmoe\\Source\\Repos\\Server-Side-Software\\NutricareApp.Entities\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\JOSUE\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\elmoe\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -58,7 +54,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

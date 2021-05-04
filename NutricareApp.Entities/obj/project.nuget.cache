@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FV9HnbXnBczbUme3DXQAEbUPLz27bZG5fiEXMCbb/mAh/hsvU0/B3EBDirNrnMqF5RqK1iVYt6uXjB5B7UHvUg==",
+  "dgSpecHash": "ZNBqy2q4HeDcuoLIkhcKAQACWW2N6hw+47jIkEBQ7c4WbEqtcMTbX5xvGVh/KhBY78YS6gqIZDaQkHx2HmoWcg==",
   "success": true,
-  "projectFilePath": "D:\\Projects\\C#\\Server-Side-Software\\NutricareApp.Entities\\NutricareApp.Entities.csproj",
+  "projectFilePath": "C:\\Users\\elmoe\\Source\\Repos\\Server-Side-Software\\NutricareApp.Entities\\NutricareApp.Entities.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
