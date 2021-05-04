@@ -21,12 +21,15 @@ namespace NutricareApp.Data
 
         public DbSet<Recipe> Recipes { get; set; }
 
+        public DbSet<Recommendation> Recommendations { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration(new ClientMap());
             modelBuilder.ApplyConfiguration(new NutritionistMap());
             modelBuilder.ApplyConfiguration(new RecipeMap());
+            modelBuilder.ApplyConfiguration(new RecommendationMap());
         }
     }
 }
