@@ -38,7 +38,5 @@ namespace NutricareApp.Entities
         [Required(ErrorMessage = "Debe incluir la fecha de creación del cliente")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime CreatedAt { get; set; }
-
-        public virtual ICollection<Recipe> Recipes { get; set; }
     }
 }
