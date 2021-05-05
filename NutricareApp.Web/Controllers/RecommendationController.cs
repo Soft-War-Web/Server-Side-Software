@@ -32,8 +32,7 @@ namespace NutricareApp.Web.Controllers
                 RecommendationId = c.RecommendationId,
                 Name = c.Name,
                 Description = c.Description,
-                CreatedAt = c.CreatedAt,
-                LastModification = c.LastModification
+                
             });
         }
 
@@ -53,8 +52,7 @@ namespace NutricareApp.Web.Controllers
                 RecommendationId = recommendation.RecommendationId,
                 Name = recommendation.Name,
                 Description = recommendation.Description,
-                CreatedAt = recommendation.CreatedAt,
-                LastModification = recommendation.LastModification,
+                
             });
 
 
@@ -62,7 +60,7 @@ namespace NutricareApp.Web.Controllers
 
         // PUT: api/Recommendations/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+       /* [HttpPut("{id}")]
         public async Task<IActionResult> PutRecommendation([FromBody] UpdateRecommendationModel model)
         {
             if (!ModelState.IsValid)
@@ -91,7 +89,7 @@ namespace NutricareApp.Web.Controllers
 
             return Ok();
         }
-
+       */
         // POST: api/Recommendations
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]

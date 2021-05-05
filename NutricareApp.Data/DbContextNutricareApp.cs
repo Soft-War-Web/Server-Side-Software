@@ -23,6 +23,12 @@ namespace NutricareApp.Data
 
         public DbSet<Recommendation> Recommendations { get; set; }
 
+        public DbSet<Specialty> Specialties { get; set; }
+
+        public DbSet<Professionalprofile> Professionalprofiles { get; set; }
+
+        public DbSet<Diet> Diets { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -30,6 +36,9 @@ namespace NutricareApp.Data
             modelBuilder.ApplyConfiguration(new NutritionistMap());
             modelBuilder.ApplyConfiguration(new RecipeMap());
             modelBuilder.ApplyConfiguration(new RecommendationMap());
+            modelBuilder.ApplyConfiguration(new SpecialtyMap());
+            modelBuilder.ApplyConfiguration(new ProfessionalprofileMap());
+            modelBuilder.ApplyConfiguration(new DietMap());
         }
     }
 }
