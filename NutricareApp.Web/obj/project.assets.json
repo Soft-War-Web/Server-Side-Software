@@ -7366,28 +7366,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {},
-    "D:\\Dev\\VisualSShared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\-zL\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Aplicacion Web\\Server-Side-Software\\NutricareApp.Web\\NutricareApp.Web.csproj",
+      "projectUniqueName": "C:\\Users\\-zL\\Documents\\GitHub\\Server-Side-Software-Web\\NutricareApp.Web\\NutricareApp.Web.csproj",
       "projectName": "NutricareApp.Web",
-      "projectPath": "D:\\Aplicacion Web\\Server-Side-Software\\NutricareApp.Web\\NutricareApp.Web.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "D:\\Aplicacion Web\\Server-Side-Software\\NutricareApp.Web\\obj\\",
+      "projectPath": "C:\\Users\\-zL\\Documents\\GitHub\\Server-Side-Software-Web\\NutricareApp.Web\\NutricareApp.Web.csproj",
+      "packagesPath": "C:\\Users\\-zL\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\-zL\\Documents\\GitHub\\Server-Side-Software-Web\\NutricareApp.Web\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "D:\\Dev\\VisualSShared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\-zL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -7400,11 +7392,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\Aplicacion Web\\Server-Side-Software\\NutricareApp.Data\\NutricareApp.Data.csproj": {
-              "projectPath": "D:\\Aplicacion Web\\Server-Side-Software\\NutricareApp.Data\\NutricareApp.Data.csproj"
+            "C:\\Users\\-zL\\Documents\\GitHub\\Server-Side-Software-Web\\NutricareApp.Data\\NutricareApp.Data.csproj": {
+              "projectPath": "C:\\Users\\-zL\\Documents\\GitHub\\Server-Side-Software-Web\\NutricareApp.Data\\NutricareApp.Data.csproj"
             },
-            "D:\\Aplicacion Web\\Server-Side-Software\\NutricareApp.Entities\\NutricareApp.Entities.csproj": {
-              "projectPath": "D:\\Aplicacion Web\\Server-Side-Software\\NutricareApp.Entities\\NutricareApp.Entities.csproj"
+            "C:\\Users\\-zL\\Documents\\GitHub\\Server-Side-Software-Web\\NutricareApp.Entities\\NutricareApp.Entities.csproj": {
+              "projectPath": "C:\\Users\\-zL\\Documents\\GitHub\\Server-Side-Software-Web\\NutricareApp.Entities\\NutricareApp.Entities.csproj"
             }
           }
         }
@@ -7456,7 +7448,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

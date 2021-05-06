@@ -28,7 +28,6 @@ namespace NutricareApp.Data.Mapping
                 .HasColumnType("varchar")
                 .HasMaxLength(50)
                 .IsUnicode(false);
-
         }
 
     }

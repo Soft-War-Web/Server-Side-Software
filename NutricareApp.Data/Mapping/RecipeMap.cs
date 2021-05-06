@@ -24,7 +24,7 @@ namespace NutricareApp.Data.Mapping
             builder.Property(c => c.CreatedAt).HasColumnName("created_At");
             builder.Property(c => c.LastModification).HasColumnName("Last_Modification");
             //FK con nutricionist
-            builder.HasOne(c => c.Nutritionist).WithMany(c => c.Recipes).HasForeignKey(c => c.NutritionistId).HasConstraintName("fk_nutritionist_recipe").IsRequired(true);
+            builder.HasOne(c => c.Nutritionist).WithMany(c => c.Recipes).HasForeignKey(c => c.NutritionistId).HasConstraintName("fk_nutritionist_recipe_id").IsRequired(true);
         }
     }
 }

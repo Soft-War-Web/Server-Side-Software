@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NutricareApp.Web", "NutricareApp.Web\NutricareApp.Web.csproj", "{5E14E4A1-7437-48F3-9366-6D041AD06AF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NutricareApp.Web", "NutricareApp.Web\NutricareApp.Web.csproj", "{5E14E4A1-7437-48F3-9366-6D041AD06AF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NutricareApp.Entities", "NutricareApp.Entities\NutricareApp.Entities.csproj", "{979E6C15-5DBC-476A-BC30-31BC90EA694F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NutricareApp.Entities", "NutricareApp.Entities\NutricareApp.Entities.csproj", "{979E6C15-5DBC-476A-BC30-31BC90EA694F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NutricareApp.Data", "NutricareApp.Data\NutricareApp.Data.csproj", "{07A27850-8108-40AB-9821-68979742BCD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NutricareApp.Data", "NutricareApp.Data\NutricareApp.Data.csproj", "{07A27850-8108-40AB-9821-68979742BCD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NutricareApp.NUnit", "NutricareApp.NUnit\NutricareApp.NUnit.csproj", "{7555B778-C566-4901-A65E-9877F48BA46D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{07A27850-8108-40AB-9821-68979742BCD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07A27850-8108-40AB-9821-68979742BCD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07A27850-8108-40AB-9821-68979742BCD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7555B778-C566-4901-A65E-9877F48BA46D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7555B778-C566-4901-A65E-9877F48BA46D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7555B778-C566-4901-A65E-9877F48BA46D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7555B778-C566-4901-A65E-9877F48BA46D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

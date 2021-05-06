@@ -16,24 +16,6 @@ D:\Projects\C#\NutricareApp\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data
 D:\Projects\C#\NutricareApp\NutricareApp.Data\obj\Debug\net5.0\ref\NutricareApp.Data.dll
 D:\Projects\C#\NutricareApp\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.pdb
 D:\Projects\C#\NutricareApp\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.genruntimeconfig.cache
-C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\NutricareApp.Data.deps.json
-C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\NutricareApp.Data.runtimeconfig.json
-C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\NutricareApp.Data.runtimeconfig.dev.json
-C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\NutricareApp.Data.dll
-C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\ref\NutricareApp.Data.dll
-C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\NutricareApp.Data.pdb
-C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\NutricareApp.Entities.dll
-C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\NutricareApp.Entities.pdb
-C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.csprojAssemblyReference.cache
-C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.AssemblyInfoInputs.cache
-C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.AssemblyInfo.cs
-C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.csproj.CoreCompileInputs.cache
-C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.csproj.CopyComplete
-C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.dll
-C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\ref\NutricareApp.Data.dll
-C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.pdb
-C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.genruntimeconfig.cache
 D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\NutricareApp.Data.deps.json
 D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\NutricareApp.Data.runtimeconfig.json
 D:\Proyecto Web\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\NutricareApp.Data.runtimeconfig.dev.json
@@ -70,3 +52,21 @@ D:\Aplicacion Web\Server-Side-Software\NutricareApp.Data\obj\Debug\net5.0\Nutric
 D:\Aplicacion Web\Server-Side-Software\NutricareApp.Data\obj\Debug\net5.0\ref\NutricareApp.Data.dll
 D:\Aplicacion Web\Server-Side-Software\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.pdb
 D:\Aplicacion Web\Server-Side-Software\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.genruntimeconfig.cache
+C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\NutricareApp.Data.deps.json
+C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\NutricareApp.Data.runtimeconfig.json
+C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\NutricareApp.Data.runtimeconfig.dev.json
+C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\NutricareApp.Data.dll
+C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\ref\NutricareApp.Data.dll
+C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\NutricareApp.Data.pdb
+C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\NutricareApp.Entities.dll
+C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\bin\Debug\net5.0\NutricareApp.Entities.pdb
+C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.csprojAssemblyReference.cache
+C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.AssemblyInfoInputs.cache
+C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.AssemblyInfo.cs
+C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.csproj.CoreCompileInputs.cache
+C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.csproj.CopyComplete
+C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.dll
+C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\ref\NutricareApp.Data.dll
+C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.pdb
+C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Data\obj\Debug\net5.0\NutricareApp.Data.genruntimeconfig.cache

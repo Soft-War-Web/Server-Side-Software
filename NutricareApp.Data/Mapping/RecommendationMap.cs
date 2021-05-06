@@ -17,6 +17,8 @@ namespace NutricareApp.Data.Mapping
                 .HasKey(c => c.RecommendationId);
             builder.Property(c => c.RecommendationId)
                 .HasColumnName("recommendation_id");
+            builder.Property(c => c.NutritionistId)
+                .HasColumnName("nutritionist_id");
             builder.Property(c => c.Name)
                 .HasColumnName("name")
                 .HasMaxLength(50)
@@ -29,7 +31,11 @@ namespace NutricareApp.Data.Mapping
                .HasColumnName("created_at");
             builder.Property(c => c.LastNotification)
                .HasColumnName("last_notification");
-
+            builder.HasOne(c => c.Nutritionist)
+                .WithMany(c => c.Recommendations)
+                .HasForeignKey(c => c.NutritionistId)
+                .HasConstraintName("fk_nutritionist_recommendation_id")
+                .IsRequired(true);
         }
     }
 }
