@@ -11,6 +11,8 @@ namespace NutricareApp.Entities
     {
         public int NutritionistId { get; set; }
 
+        public int ProfessionalProfileId { get; set; }
+
         [Required(ErrorMessage = "Debe incluir el username del cliente")]
         [StringLength(16, MinimumLength = 6, ErrorMessage = "El username del cliente debe tener de 6 a 16 caracteres")]
         public string Username { get; set; }
@@ -38,7 +40,12 @@ namespace NutricareApp.Entities
         [Required(ErrorMessage = "Debe incluir la fecha de creación del cliente")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime CreatedAt { get; set; }
+        //dasdasda
+        public Professionalprofile ProfessionalProfile {get; set;}
 
         public virtual ICollection<Recipe> Recipes { get; set; }
+        public virtual ICollection<Recommendation> Recommendations { get; set; }
+        public virtual ICollection<Appointment> Appointments { get; set; }
+
     }
 }

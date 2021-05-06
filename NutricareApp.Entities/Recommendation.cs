@@ -11,6 +11,9 @@ namespace NutricareApp.Entities
     {
         public int RecommendationId { get; set; }
 
+        [Required(ErrorMessage = "Debe asignar un nutricionista a la recomendación")]
+        public int NutritionistId { get; set; }
+
         [Required(ErrorMessage = "Debe incluir el name del recommendation")]
         [StringLength(16, MinimumLength = 6, ErrorMessage = "El name del recommendation debe tener de 5 a 50 caracteres")]
         public string Name { get; set; }
@@ -26,6 +29,8 @@ namespace NutricareApp.Entities
         [Required(ErrorMessage = "Debe incluir la fecha de la modificacion del recommendation")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public string LastNotification { get; set; }
+
+        public virtual Nutritionist Nutritionist { get; set; }
 
     }
 }

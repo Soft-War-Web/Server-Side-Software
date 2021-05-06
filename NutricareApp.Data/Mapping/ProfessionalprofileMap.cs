@@ -16,7 +16,7 @@ namespace NutricareApp.Data.Mapping
             builder.ToTable("professional_profile")
                 .HasKey(c => c.ProfessionaprofileId);
             builder.Property(c => c.ProfessionaprofileId)
-                    .HasColumnName("professionalprifile_if");
+                    .HasColumnName("professional_profile_id");
             builder.Property(c => c.ProfessionalExperienceDescription)
                     .HasColumnName("professional_experience_descriptopn")
                     .HasColumnType("varchar")

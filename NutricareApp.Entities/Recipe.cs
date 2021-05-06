@@ -11,7 +11,7 @@ namespace NutricareApp.Entities
     {
         public int RecipeId { get; set; }
 
-        [Required(ErrorMessage = "Debe asignar una categoria al producto")]
+        [Required(ErrorMessage = "Debe asignar un nutricionista a la receta")]
         public int NutritionistId { get; set; }
 
         [Required(ErrorMessage = "Debe incluir el nombre de la receta")]
@@ -41,6 +41,5 @@ namespace NutricareApp.Entities
         public DateTime LastModification { get; set; }
 
         public virtual Nutritionist Nutritionist { get; set; }
-        //good
     }
 }

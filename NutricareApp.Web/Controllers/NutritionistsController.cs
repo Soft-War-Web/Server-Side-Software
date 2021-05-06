@@ -35,7 +35,9 @@ namespace NutricareApp.Web.Controllers
                 //Password = c.Password,
                 FirstName = c.FirstName,
                 LastName = c.LastName,
-                CnpNumber = c.CnpNumber
+                CnpNumber = c.CnpNumber,
+                Email = c.Email,
+                ProfessionalProfile = c.ProfessionalProfile
             });
         }
 
@@ -58,7 +60,9 @@ namespace NutricareApp.Web.Controllers
                 //Password = nutritionist.Password,
                 FirstName = nutritionist.FirstName,
                 LastName = nutritionist.LastName,
-                CnpNumber = nutritionist.CnpNumber
+                CnpNumber = nutritionist.CnpNumber,
+                Email = nutritionist.Email,
+                ProfessionalProfile = nutritionist.ProfessionalProfile
             });
         }
 
