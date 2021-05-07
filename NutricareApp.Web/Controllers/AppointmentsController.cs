@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NutricareApp.Data;
 using NutricareApp.Entities;
+using NutricareApp.Web.Models;
 
 namespace NutricareApp.Web.Controllers
 {
@@ -23,14 +24,24 @@ namespace NutricareApp.Web.Controllers
 
         // GET: api/Appointments
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Appointment>>> GetAppointments()
+        public async Task<IEnumerable<AppointmentModel>> GetAppointments()
         {
-            return await _context.Appointments.ToListAsync();
+            var appointmentList = await _context.Appointments.ToListAsync();
+
+            return appointmentList.Select(c => new AppointmentModel
+            {
+                AppointmentId = c.AppointmentId,
+                ClientId = c.ClientId,
+                NutritionistId = c.NutritionistId,
+                DietId = c.DietId,
+                AppointmentDate = c.AppointmentDate,
+                NutritionistNotes = c.NutritionistNotes
+            });
         }
 
         // GET: api/Appointments/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Appointment>> GetAppointment(int id)
+        [HttpGet("[action]/{id}")]
+        public async Task<IActionResult> GetAppointmentById([FromRoute] int id)
         {
             var appointment = await _context.Appointments.FindAsync(id);
 
@@ -39,54 +50,87 @@ namespace NutricareApp.Web.Controllers
                 return NotFound();
             }
 
-            return appointment;
+            return Ok(new AppointmentModel
+            {
+                AppointmentId = appointment.AppointmentId,
+                ClientId = appointment.ClientId,
+                NutritionistId = appointment.NutritionistId,
+                DietId = appointment.DietId,
+                AppointmentDate = appointment.AppointmentDate,
+                NutritionistNotes = appointment.NutritionistNotes
+            });
         }
 
         // PUT: api/Appointments/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutAppointment(int id, Appointment appointment)
+        [HttpPut("[action]")]
+        public async Task<IActionResult> PutAppointment([FromBody] UpdateAppointmentModel model)
         {
-            if (id != appointment.AppointmentId)
-            {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            if (model.NutritionistId <= 0)
                 return BadRequest();
-            }
 
-            _context.Entry(appointment).State = EntityState.Modified;
+            var appointment = await _context.Appointments.FirstOrDefaultAsync(c => c.AppointmentId == model.AppointmentId);
+
+            if (appointment == null)
+                return NotFound();
+
+            //La Id debe ser la misma
+            appointment.AppointmentId = model.AppointmentId;
+            appointment.ClientId= model.ClientId;
+            appointment.NutritionistId = model.NutritionistId;
+            appointment.DietId = model.DietId;
+            appointment.AppointmentDate = model.AppointmentDate;
+            appointment.NutritionistNotes = model.NutritionistNotes;
 
             try
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateConcurrencyException e)
             {
-                if (!AppointmentExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return BadRequest(e.Message);
             }
 
-            return NoContent();
+            return Ok();
         }
 
         // POST: api/Appointments
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Appointment>> PostAppointment(Appointment appointment)
+        public async Task<IActionResult> PostAppointment([FromBody] CreateAppointmentModel model)
         {
-            _context.Appointments.Add(appointment);
-            await _context.SaveChangesAsync();
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-            return CreatedAtAction("GetAppointment", new { id = appointment.AppointmentId }, appointment);
+            Appointment appointment = new Appointment //Esto es lo que se guarda en BD
+            {
+                ClientId = model.ClientId,
+                NutritionistId = model.NutritionistId,
+                DietId = model.DietId,
+                AppointmentDate = model.AppointmentDate,
+                NutritionistNotes = model.NutritionistNotes
+
+            };
+
+            _context.Appointments.Add(appointment);
+
+            try
+            {
+                await _context.SaveChangesAsync(); //Se guarda en la BD (_context)
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            return Ok();
         }
 
         // DELETE: api/Appointments/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAppointment(int id)
+        public async Task<IActionResult> DeleteAppointment([FromRoute] int id)
         {
             var appointment = await _context.Appointments.FindAsync(id);
             if (appointment == null)
@@ -95,14 +139,17 @@ namespace NutricareApp.Web.Controllers
             }
 
             _context.Appointments.Remove(appointment);
-            await _context.SaveChangesAsync();
 
-            return NoContent();
-        }
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
 
-        private bool AppointmentExists(int id)
-        {
-            return _context.Appointments.Any(e => e.AppointmentId == id);
+            return Ok();
         }
     }
 }

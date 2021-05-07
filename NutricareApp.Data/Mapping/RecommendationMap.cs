@@ -28,9 +28,11 @@ namespace NutricareApp.Data.Mapping
                .HasMaxLength(250)
                .IsUnicode(false);
             builder.Property(c => c.CreatedAt)
-               .HasColumnName("created_at");
-            builder.Property(c => c.LastNotification)
-               .HasColumnName("last_notification");
+               .HasColumnName("created_at")
+               .HasColumnType("DateTime");
+            builder.Property(c => c.LastModification)
+               .HasColumnName("last_modification")
+               .HasColumnType("DateTime");
             builder.HasOne(c => c.Nutritionist)
                 .WithMany(c => c.Recommendations)
                 .HasForeignKey(c => c.NutritionistId)

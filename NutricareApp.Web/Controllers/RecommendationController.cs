@@ -29,15 +29,15 @@ namespace NutricareApp.Web.Controllers
             var RecommendationList = await _context.Recommendations.ToListAsync();
             return RecommendationList.Select(c => new RecommendationModel
             {
+                NutritionistId = c.NutritionistId,
                 RecommendationId = c.RecommendationId,
                 Name = c.Name,
                 Description = c.Description,
-                
             });
         }
 
         // GET: api/Recommendations/5
-        [HttpGet("{id}")]
+        [HttpGet("[action]/{id}")]
         public async Task<IActionResult> GetRecommendationById(int id)
         {
             var recommendation = await _context.Recommendations.FindAsync(id);
@@ -49,34 +49,33 @@ namespace NutricareApp.Web.Controllers
 
             return Ok(new RecommendationModel
             {
+                NutritionistId = recommendation.NutritionistId,
                 RecommendationId = recommendation.RecommendationId,
                 Name = recommendation.Name,
                 Description = recommendation.Description,
-                
             });
-
-
         }
 
         // PUT: api/Recommendations/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-       /* [HttpPut("{id}")]
+        [HttpPut("[action]")]
         public async Task<IActionResult> PutRecommendation([FromBody] UpdateRecommendationModel model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            if (model.RecommendationtId <= 0)
+            if (model.RecommendationId <= 0)
                 return BadRequest();
 
-            var recommendation = await _context.Recommendations.FirstOrDefaultAsync(c => c.RecommendationtId == model.RecommendationtId);
+            var recommendation = await _context.Recommendations.FirstOrDefaultAsync(c => c.RecommendationId == model.RecommendationId);
 
             if (recommendation == null)
                 return NotFound();
 
+            recommendation.RecommendationId = model.RecommendationId;
             recommendation.Name = model.Name;
             recommendation.Description = model.Description;
-
+            recommendation.LastModification = model.LastModification;
 
             try
             {
@@ -89,7 +88,7 @@ namespace NutricareApp.Web.Controllers
 
             return Ok();
         }
-       */
+       
         // POST: api/Recommendations
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -100,8 +99,11 @@ namespace NutricareApp.Web.Controllers
 
             Recommendation recommendation = new Recommendation
             {
+                NutritionistId = model.NutritionistId,
                 Name = model.Name,
-                Description = model.Description
+                Description = model.Description,
+                CreatedAt = model.CreatedAt,
+                LastModification = model.LastModification                
             };
 
             _context.Recommendations.Add(recommendation);
@@ -135,11 +137,6 @@ namespace NutricareApp.Web.Controllers
                 return BadRequest(e.Message);
             }
             return Ok();
-        }
-
-        private bool RecommendationExists(int id)
-        {
-            return _context.Recommendations.Any(e => e.RecommendationId == id);
         }
     }
 }

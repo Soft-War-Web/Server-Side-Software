@@ -24,11 +24,11 @@ namespace NutricareApp.Entities
 
         [Required(ErrorMessage = "Debe incluir la fecha de creación del recommendation")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        public string CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         [Required(ErrorMessage = "Debe incluir la fecha de la modificacion del recommendation")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        public string LastNotification { get; set; }
+        public DateTime LastModification { get; set; }
 
         public virtual Nutritionist Nutritionist { get; set; }
 

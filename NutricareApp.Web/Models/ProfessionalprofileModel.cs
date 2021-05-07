@@ -9,13 +9,13 @@ namespace NutricareApp.Web.Models
 {
     public class ProfessionalprofileModel
     {
-        public int ProfessionaprofileId { get; set; }
+        public int ProfessionalprofileId { get; set; }
+
+        [Required(ErrorMessage = "Debe incluir un nutricionista")]
+        public int NutritionistId { get; set; }
 
         [Required(ErrorMessage = "Debe incluir una descripcion")]
         [StringLength(500, MinimumLength = 10, ErrorMessage = "La descripcion debe tener de entre 10 a 500 caracteres")]
         public string ProfessionalExperienceDescription { get; set; }
-        public virtual ICollection<SpecialtyProfile> SpecialtyProfiles { get; set; }
-
-
     }
 }

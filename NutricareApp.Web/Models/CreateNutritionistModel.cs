@@ -8,6 +8,8 @@ namespace NutricareApp.Web.Models
 {
     public class CreateNutritionistModel
     {
+        //public int ProfessionalProfileId { get; set; }
+
         [Required(ErrorMessage = "Debe incluir el username del cliente")]
         [StringLength(16, MinimumLength = 6, ErrorMessage = "El username del cliente debe tener de 6 a 16 caracteres")]
         public string Username { get; set; }

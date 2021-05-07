@@ -31,13 +31,12 @@ namespace NutricareApp.Web.Controllers
             return nutritionistList.Select(c => new NutritionistModel
             {
                 NutritionistId = c.NutritionistId,
+                //ProfessionalProfileId = c.ProfessionalProfileId,
                 Username = c.Username,
-                //Password = c.Password,
                 FirstName = c.FirstName,
                 LastName = c.LastName,
                 CnpNumber = c.CnpNumber,
-                Email = c.Email,
-                ProfessionalProfile = c.ProfessionalProfile
+                Email = c.Email
             });
         }
 
@@ -56,13 +55,12 @@ namespace NutricareApp.Web.Controllers
             return Ok(new NutritionistModel
             {
                 NutritionistId = nutritionist.NutritionistId,
+                //ProfessionalProfileId = nutritionist.ProfessionalProfileId,
                 Username = nutritionist.Username,
-                //Password = nutritionist.Password,
                 FirstName = nutritionist.FirstName,
                 LastName = nutritionist.LastName,
                 CnpNumber = nutritionist.CnpNumber,
-                Email = nutritionist.Email,
-                ProfessionalProfile = nutritionist.ProfessionalProfile
+                Email = nutritionist.Email
             });
         }
 
@@ -83,13 +81,13 @@ namespace NutricareApp.Web.Controllers
                 return NotFound();
 
             //La Id debe ser la misma
+            //nutritionist.ProfessionalProfileId = model.ProfessionalProfileId;
             nutritionist.Username = model.Username;
             nutritionist.Password = model.Password;
             nutritionist.FirstName = model.FirstName; //Se debe encriptar para que se guarde así en la BD (FALTA)
             nutritionist.LastName = model.LastName;
             nutritionist.Email = model.Email;
             nutritionist.CnpNumber = model.CnpNumber;
-            nutritionist.CreatedAt = model.CreatedAt;
 
             try
             {
@@ -113,6 +111,7 @@ namespace NutricareApp.Web.Controllers
 
             Nutritionist nutritionist = new Nutritionist //Esto es lo que se guarda en BD
             {
+                //ProfessionalProfileId = model.ProfessionalProfileId,
                 Username = model.Username,
                 Password = model.Password, //Se debe encriptar para que se guarde así en la BD (FALTA)
                 FirstName = model.FirstName,

@@ -8,6 +8,9 @@ namespace NutricareApp.Web.Models
 {
     public class CreateRecommendationModel
     {
+        [Required(ErrorMessage = "Debe asignar un nutricionista a la recomendación")]
+        public int NutritionistId { get; set; }
+
         [Required(ErrorMessage = "Debe incluir el name de la recommendacion")]
         [StringLength(50, MinimumLength = 5, ErrorMessage = "El name de la recommendacion debe tener de 5 a 50 caracteres")]
         public string Name { get; set; }
