@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NutricareApp.Data;
 using NutricareApp.Entities;
+using NutricareApp.Web.Models;
 
 namespace NutricareApp.Web.Controllers
 {
@@ -23,14 +24,22 @@ namespace NutricareApp.Web.Controllers
 
         // GET: api/Specialties
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Specialty>>> GetSpecialties()
+        public async Task<IEnumerable<SpecialtyModel>> GetSpecialties()
         {
-            return await _context.Specialties.ToListAsync();
+            var specialtyList = await _context.Specialties.ToListAsync();
+
+            return specialtyList.Select(c => new SpecialtyModel
+            {
+                SpecialtyId = c.SpecialtyId,
+                SpecialtyName = c.SpecialtyName,
+                InstitutionName = c.InstitutionName,
+                SpecialtyProfiles = c.SpecialtyProfiles
+            });
         }
 
         // GET: api/Specialties/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Specialty>> GetSpecialty(int id)
+        [HttpGet("[action]/{id}")]
+        public async Task<IActionResult> GetSpecialtyById([FromRoute] int id)
         {
             var specialty = await _context.Specialties.FindAsync(id);
 
@@ -39,38 +48,45 @@ namespace NutricareApp.Web.Controllers
                 return NotFound();
             }
 
-            return specialty;
+            return Ok(new SpecialtyModel
+            {
+                SpecialtyId = specialty.SpecialtyId,
+                SpecialtyName = specialty.SpecialtyName,
+                InstitutionName = specialty.InstitutionName,
+                SpecialtyProfiles = specialty.SpecialtyProfiles
+            });
         }
 
         // PUT: api/Specialties/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutSpecialty(int id, Specialty specialty)
+        [HttpPut("[action]")]
+        public async Task<IActionResult> PutSpecialty([FromBody] UpdateSpecialtyModel model)
         {
-            if (id != specialty.SpecialtyId)
-            {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            if (model.SpecialtyId <= 0)
                 return BadRequest();
-            }
 
-            _context.Entry(specialty).State = EntityState.Modified;
+            var specialty = await _context.Specialties.FirstOrDefaultAsync(c => c.SpecialtyId == model.SpecialtyId);
+
+            if (specialty == null)
+                return NotFound();
+
+            //La Id debe ser la misma
+            specialty.SpecialtyId = model.SpecialtyId;
+            specialty.SpecialtyName = model.SpecialtyName;
+            specialty.InstitutionName = model.InstitutionName;
 
             try
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateConcurrencyException e)
             {
-                if (!SpecialtyExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return BadRequest(e.Message);
             }
 
-            return NoContent();
+            return Ok();
         }
 
         // POST: api/Specialties
@@ -86,7 +102,7 @@ namespace NutricareApp.Web.Controllers
 
         // DELETE: api/Specialties/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteSpecialty(int id)
+        public async Task<IActionResult> DeleteSpecialty([FromRoute] int id)
         {
             var specialty = await _context.Specialties.FindAsync(id);
             if (specialty == null)
@@ -95,14 +111,17 @@ namespace NutricareApp.Web.Controllers
             }
 
             _context.Specialties.Remove(specialty);
-            await _context.SaveChangesAsync();
 
-            return NoContent();
-        }
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
 
-        private bool SpecialtyExists(int id)
-        {
-            return _context.Specialties.Any(e => e.SpecialtyId == id);
+            return Ok();
         }
     }
 }
