@@ -15,12 +15,16 @@ namespace NutricareApp.Web.Models
         public string Name { get; set; }
 
         [StringLength(250, MinimumLength = 50, ErrorMessage = "la descripcion de la receta debe tener de 50 a 250 caracteres")]
-        public string Descripcion { get; set; }
+        public string Description { get; set; }
 
         [StringLength(500, MinimumLength = 50, ErrorMessage = "la preparacion de la receta debe tener de 50 a 500 caracteres")]
         public string Preparation { get; set; }
 
         [StringLength(500, MinimumLength = 50, ErrorMessage = "los ingredientes de la receta debe tener de 50 a 500 caracteres")]
         public string Ingredients { get; set; }
+
+        [Required(ErrorMessage = "Debe incluir la fecha de modificación del cliente")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        public DateTime LastModification { get; set; }
     }
 }

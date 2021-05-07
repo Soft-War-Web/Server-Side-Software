@@ -10,6 +10,7 @@ namespace NutricareApp.Web.Models
     {
         public int NutritionistId { get; set; }
 
+        //public int ProfessionalProfileId { get; set; }
         [Required(ErrorMessage = "Debe incluir el username del cliente")]
         [StringLength(16, MinimumLength = 6, ErrorMessage = "El username del cliente debe tener de 6 a 16 caracteres")]
         public string Username { get; set; }
@@ -33,9 +34,5 @@ namespace NutricareApp.Web.Models
         [Required(ErrorMessage = "Debe incluir el número del Colegio de Nutricionistas del Perú (CNP) del nutricionista")]
         //[StringLength(6, MinimumLength = 6, ErrorMessage = "El número del Colegio de Nutricionistas del Perú (CNP) del nutricionista debe ser de 6 caracteres")]
         public int CnpNumber { get; set; }
-
-        [Required(ErrorMessage = "Debe incluir la fecha de creación del cliente")]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime CreatedAt { get; set; }
     }
 }

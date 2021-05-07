@@ -19,13 +19,11 @@ namespace NutricareApp.Web.Models
 
         public int DietId { get; set; }
 
+        [Required(ErrorMessage = "Debe incluir la fecha de creación de la cita")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        public DateTime AppointmentDate { get; set; }
+
         [StringLength(500, ErrorMessage = "Las notas del nutricionista no deben tener más 50 caracteres")]
         public string NutritionistNotes { get; set; }
-
-        public virtual Client Client { get; set; }
-
-        public virtual Nutritionist Nutritionist { get; set; }
-
-        //public virtual Diet Diet { get; set; }
     }
 }

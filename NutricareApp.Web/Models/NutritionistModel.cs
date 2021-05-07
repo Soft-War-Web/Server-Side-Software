@@ -5,6 +5,7 @@ namespace NutricareApp.Web.Models
     public class NutritionistModel
     {
         public int NutritionistId { get; set; }
+        //public int ProfessionalProfileId { get; set; }
 
         public string Username { get; set; }
 
@@ -19,6 +20,6 @@ namespace NutricareApp.Web.Models
         public int CnpNumber { get; set; }
 
         //public DateTime CreatedAt { get; set; }
-        public virtual Professionalprofile ProfessionalProfile { get; set; }
+        //public virtual Professionalprofile ProfessionalProfile { get; set; }
     }
 }

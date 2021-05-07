@@ -30,9 +30,9 @@ namespace NutricareApp.Web.Controllers
 
             return professionalprofileList.Select(c => new ProfessionalprofileModel
             {
-                ProfessionaprofileId = c.ProfessionaprofileId,
-                ProfessionalExperienceDescription = c.ProfessionalExperienceDescription,
-                SpecialtyProfiles = c.SpecialtyProfiles
+                ProfessionalprofileId = c.ProfessionalprofileId,
+                NutritionistId = c.NutritionistId,
+                ProfessionalExperienceDescription = c.ProfessionalExperienceDescription
             });
         }
 
@@ -49,9 +49,9 @@ namespace NutricareApp.Web.Controllers
 
             return Ok(new ProfessionalprofileModel
             {
-                ProfessionaprofileId = profesionalprofile.ProfessionaprofileId,
-                ProfessionalExperienceDescription = profesionalprofile.ProfessionalExperienceDescription,
-                SpecialtyProfiles = profesionalprofile.SpecialtyProfiles
+                ProfessionalprofileId = profesionalprofile.ProfessionalprofileId,
+                NutritionistId = profesionalprofile.NutritionistId,
+                ProfessionalExperienceDescription = profesionalprofile.ProfessionalExperienceDescription
             });
         }
 
@@ -63,16 +63,16 @@ namespace NutricareApp.Web.Controllers
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            if (model.ProfessionaprofileId <= 0)
+            if (model.ProfessionalprofileId <= 0)
                 return BadRequest();
 
-            var professionalprofile = await _context.Professionalprofiles.FirstOrDefaultAsync(c => c.ProfessionaprofileId == model.ProfessionaprofileId);
+            var professionalprofile = await _context.Professionalprofiles.FirstOrDefaultAsync(c => c.ProfessionalprofileId == model.ProfessionalprofileId);
 
             if (professionalprofile == null)
                 return NotFound();
 
             //La Id debe ser la misma
-            professionalprofile.ProfessionaprofileId = model.ProfessionaprofileId;
+            professionalprofile.ProfessionalprofileId = model.ProfessionalprofileId; //podría agregarse nut id
             professionalprofile.ProfessionalExperienceDescription = model.ProfessionalExperienceDescription;
 
             try
@@ -98,9 +98,8 @@ namespace NutricareApp.Web.Controllers
 
             Professionalprofile professionalprofile = new Professionalprofile //Esto es lo que se guarda en BD
             {
-                ProfessionalExperienceDescription = model.ProfessionalExperienceDescription,
-
-
+                NutritionistId = model.NutritionistId,
+                ProfessionalExperienceDescription = model.ProfessionalExperienceDescription
             };
 
             _context.Professionalprofiles.Add(professionalprofile);
@@ -143,7 +142,7 @@ namespace NutricareApp.Web.Controllers
 
         private bool ProfessionalprofileExists(int id)
         {
-            return _context.Professionalprofiles.Any(e => e.ProfessionaprofileId == id);
+            return _context.Professionalprofiles.Any(e => e.ProfessionalprofileId == id);
         }
     }
 }

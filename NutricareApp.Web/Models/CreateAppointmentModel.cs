@@ -20,11 +20,7 @@ namespace NutricareApp.Web.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime AppointmentDate { get; set; }
 
-        /* Toy pensando
-        public virtual Client Client { get; set; }
-
-        public virtual Nutritionist Nutritionist { get; set; }
-
-        //public virtual Diet Diet { get; set; }*/
+        [StringLength(500, ErrorMessage = "Las notas del nutricionista no deben tener más 50 caracteres")]
+        public string NutritionistNotes { get; set; }
     }
 }

@@ -30,12 +30,11 @@ namespace NutricareApp.Web.Controllers
             return clientList.Select(c => new ClientModel
             {
                 ClientId = c.ClientId,
+                Username = c.Username,
+                Password = c.Password,
                 FirstName = c.FirstName,
                 LastName = c.LastName,
-                Password = c.Password,
-                Email = c.Email,
-                Username = c.Username,
-                CreatedAt = c.CreatedAt
+                Email = c.Email
             });
         }
 
@@ -54,11 +53,10 @@ namespace NutricareApp.Web.Controllers
             {
                 ClientId = client.ClientId,
                 Username = client.Username,
-                Email = client.Email,
                 Password = client.Password,
                 FirstName = client.FirstName,
                 LastName = client.LastName,
-                CreatedAt = client.CreatedAt
+                Email = client.Email                
             });
         }
 
@@ -78,11 +76,11 @@ namespace NutricareApp.Web.Controllers
             if (client == null)
                 return NotFound();
 
+            client.Username = model.Username;
+            client.Password = model.Password;
             client.FirstName = model.FirstName;
             client.LastName = model.LastName;
             client.Email = model.Email;
-            client.Username = model.Username;
-            client.Password = model.Password;
 
             try
             {
@@ -106,11 +104,12 @@ namespace NutricareApp.Web.Controllers
 
             Client client = new Client
             {
-                FirstName = model.FirstName,
-                LastName = model.LastName,
                 Username = model.Username,
                 Password = model.Password,
-                Email = model.Email
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Email = model.Email,
+                CreatedAt = model.CreatedAt
             };
 
             _context.Clients.Add(client);

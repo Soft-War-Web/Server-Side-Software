@@ -32,8 +32,7 @@ namespace NutricareApp.Web.Controllers
             {
                 SpecialtyId = c.SpecialtyId,
                 SpecialtyName = c.SpecialtyName,
-                InstitutionName = c.InstitutionName,
-                SpecialtyProfiles = c.SpecialtyProfiles
+                InstitutionName = c.InstitutionName
             });
         }
 
@@ -52,8 +51,7 @@ namespace NutricareApp.Web.Controllers
             {
                 SpecialtyId = specialty.SpecialtyId,
                 SpecialtyName = specialty.SpecialtyName,
-                InstitutionName = specialty.InstitutionName,
-                SpecialtyProfiles = specialty.SpecialtyProfiles
+                InstitutionName = specialty.InstitutionName
             });
         }
 
@@ -92,12 +90,29 @@ namespace NutricareApp.Web.Controllers
         // POST: api/Specialties
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Specialty>> PostSpecialty(Specialty specialty)
+        public async Task<IActionResult> PostSpecialty([FromBody] CreateSpecialtyModel model)
         {
-            _context.Specialties.Add(specialty);
-            await _context.SaveChangesAsync();
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-            return CreatedAtAction("GetSpecialty", new { id = specialty.SpecialtyId }, specialty);
+            Specialty specialty = new Specialty //Esto es lo que se guarda en BD
+            {
+                SpecialtyName = model.SpecialtyName,
+                InstitutionName = model.InstitutionName
+            };
+
+            _context.Specialties.Add(specialty);
+
+            try
+            {
+                await _context.SaveChangesAsync(); //Se guarda en la BD (_context)
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            return Ok();
         }
 
         // DELETE: api/Specialties/5

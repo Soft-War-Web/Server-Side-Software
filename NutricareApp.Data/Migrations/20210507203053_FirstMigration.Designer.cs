@@ -10,7 +10,7 @@ using NutricareApp.Data;
 namespace NutricareApp.Data.Migrations
 {
     [DbContext(typeof(DbContextNutricareApp))]
-    [Migration("20210506055344_FirstMigration")]
+    [Migration("20210507203053_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,7 +70,7 @@ namespace NutricareApp.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("DateTime")
                         .HasColumnName("created_at");
 
                     b.Property<string>("Email")
@@ -98,7 +98,7 @@ namespace NutricareApp.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(60)
                         .IsUnicode(false)
-                        .HasColumnType("varchar(60)")
+                        .HasColumnType("char(60)")
                         .HasColumnName("password");
 
                     b.Property<string>("Username")
@@ -190,10 +190,6 @@ namespace NutricareApp.Data.Migrations
                         .HasColumnType("char(60)")
                         .HasColumnName("password");
 
-                    b.Property<int>("ProfessionalProfileId")
-                        .HasColumnType("int")
-                        .HasColumnName("professional_profile_id");
-
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasMaxLength(16)
@@ -208,18 +204,26 @@ namespace NutricareApp.Data.Migrations
 
             modelBuilder.Entity("NutricareApp.Entities.Professionalprofile", b =>
                 {
-                    b.Property<int>("ProfessionaprofileId")
+                    b.Property<int>("ProfessionalprofileId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasColumnName("professional_profile_id");
+                        .HasColumnName("professional_profile_id")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("NutritionistId")
+                        .HasColumnType("int");
 
                     b.Property<string>("ProfessionalExperienceDescription")
                         .IsRequired()
                         .HasMaxLength(500)
                         .IsUnicode(false)
                         .HasColumnType("varchar(500)")
-                        .HasColumnName("professional_experience_descriptopn");
+                        .HasColumnName("professional_experience_description");
 
-                    b.HasKey("ProfessionaprofileId");
+                    b.HasKey("ProfessionalprofileId");
+
+                    b.HasIndex("NutritionistId")
+                        .IsUnique();
 
                     b.ToTable("professional_profile");
                 });
@@ -233,17 +237,17 @@ namespace NutricareApp.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2")
+                        .HasColumnType("DateTime")
                         .HasColumnName("created_At");
 
-                    b.Property<string>("Descripcion")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(250)
                         .IsUnicode(false)
                         .HasColumnType("varchar(250)")
-                        .HasColumnName("descripcion");
+                        .HasColumnName("description");
 
-                    b.Property<int>("Favotite")
+                    b.Property<int>("Favorite")
                         .HasColumnType("int")
                         .HasColumnName("favorite");
 
@@ -254,8 +258,8 @@ namespace NutricareApp.Data.Migrations
                         .HasColumnName("ingredients");
 
                     b.Property<DateTime>("LastModification")
-                        .HasColumnType("datetime2")
-                        .HasColumnName("Last_Modification");
+                        .HasColumnType("DateTime")
+                        .HasColumnName("last_modification");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -289,9 +293,8 @@ namespace NutricareApp.Data.Migrations
                         .HasColumnName("recommendation_id")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CreatedAt")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("DateTime")
                         .HasColumnName("created_at");
 
                     b.Property<string>("Description")
@@ -301,10 +304,9 @@ namespace NutricareApp.Data.Migrations
                         .HasColumnType("varchar(250)")
                         .HasColumnName("description");
 
-                    b.Property<string>("LastNotification")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("last_notification");
+                    b.Property<DateTime>("LastModification")
+                        .HasColumnType("DateTime")
+                        .HasColumnName("last_modification");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -400,8 +402,8 @@ namespace NutricareApp.Data.Migrations
                 {
                     b.HasOne("NutricareApp.Entities.Nutritionist", "Nutritionist")
                         .WithOne("ProfessionalProfile")
-                        .HasForeignKey("NutricareApp.Entities.Professionalprofile", "ProfessionaprofileId")
-                        .HasConstraintName("fk_professional_id")
+                        .HasForeignKey("NutricareApp.Entities.Professionalprofile", "NutritionistId")
+                        .HasConstraintName("fk_nutritionist_profile_id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

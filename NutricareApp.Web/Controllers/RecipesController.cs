@@ -29,15 +29,18 @@ namespace NutricareApp.Web.Controllers
             var recipeList = await _context.Recipes.ToListAsync();
             return recipeList.Select(c => new RecipeModel
             {
+                NutritionistId = c.NutritionistId,
                 RecipeId = c.RecipeId,
                 Name = c.Name,
-                Descripcion = c.Descripcion
+                Description = c.Description,
+                Preparation = c.Preparation,
+                Ingredients = c.Ingredients
             });
         }
 
         // GET: api/Recipes/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Recipe>> GetRecipeById(int id)
+        [HttpGet("[action]/{id}")]
+        public async Task<IActionResult> GetRecipeById([FromRoute] int id)
         {
             var recipe = await _context.Recipes.FindAsync(id);
 
@@ -46,54 +49,87 @@ namespace NutricareApp.Web.Controllers
                 return NotFound();
             }
 
-            return recipe;
+            return Ok(new RecipeModel
+            { 
+                NutritionistId = recipe.NutritionistId,
+                RecipeId = recipe.RecipeId,
+                Name = recipe.Name,
+                Description = recipe.Description,
+                Preparation = recipe.Preparation,
+                Ingredients = recipe.Ingredients
+            });
         }
 
         // PUT: api/Recipes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutRecipe(int id, Recipe recipe)
+        [HttpPut("[action]")]
+        public async Task<IActionResult> PutRecipe([FromBody] UpdateRecipeModel model)
         {
-            if (id != recipe.RecipeId)
-            {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            if (model.RecipeId <= 0)
                 return BadRequest();
-            }
 
-            _context.Entry(recipe).State = EntityState.Modified;
+            var recipe = await _context.Recipes.FirstOrDefaultAsync(c => c.RecipeId == model.RecipeId);
+
+            if (recipe == null)
+                return NotFound();
+
+            //La Id debe ser la misma
+            recipe.RecipeId = model.RecipeId;
+            recipe.Name = model.Name;
+            recipe.Description = model.Description;
+            recipe.Preparation = model.Preparation;
+            recipe.Ingredients = model.Ingredients;
 
             try
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateConcurrencyException e)
             {
-                if (!RecipeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return BadRequest(e.Message);
             }
 
-            return NoContent();
+            return Ok();
         }
 
         // POST: api/Recipes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Recipe>> PostRecipe(Recipe recipe)
+        public async Task<IActionResult> PostRecipe(CreateRecipeModel model)
         {
-            _context.Recipes.Add(recipe);
-            await _context.SaveChangesAsync();
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-            return CreatedAtAction("GetRecipe", new { id = recipe.RecipeId }, recipe);
+            Recipe recipe = new Recipe //Esto es lo que se guarda en BD
+            {
+                NutritionistId = model.NutritionistId,
+                Name = model.Name,
+                Description = model.Description,
+                Preparation = model.Preparation,
+                Ingredients = model.Ingredients,
+                CreatedAt = model.CreatedAt,
+                LastModification = model.LastModification
+            };
+
+            _context.Recipes.Add(recipe);
+
+            try
+            {
+                await _context.SaveChangesAsync(); //Se guarda en la BD (_context)
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            return Ok();
         }
 
         // DELETE: api/Recipes/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRecipe(int id)
+        public async Task<IActionResult> DeleteRecipe([FromRoute] int id)
         {
             var recipe = await _context.Recipes.FindAsync(id);
             if (recipe == null)
@@ -102,14 +138,17 @@ namespace NutricareApp.Web.Controllers
             }
 
             _context.Recipes.Remove(recipe);
-            await _context.SaveChangesAsync();
 
-            return NoContent();
-        }
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
 
-        private bool RecipeExists(int id)
-        {
-            return _context.Recipes.Any(e => e.RecipeId == id);
+            return Ok();
         }
     }
 }
