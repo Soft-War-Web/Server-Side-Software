@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NutricareApp.Data;
 using NutricareApp.Entities;
+using NutricareApp.Web.Models;
 
 namespace NutricareApp.Web.Controllers
 {
@@ -23,14 +24,24 @@ namespace NutricareApp.Web.Controllers
 
         // GET: api/Diets
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Diet>>> GetDiets()
+        public async Task<IEnumerable<DietModel>> GetDiets()
         {
-            return await _context.Diets.ToListAsync();
+            var dietsList = await _context.Diets.ToListAsync();
+
+            return dietsList.Select(c => new DietModel
+            {
+                DietId = c.DietId,
+                DietName = c.DietName,
+                DietDescription = c.DietDescription,
+                CreatedAt = c.CreatedAt,
+                Appointments = c.Appointments
+        
+            });
         }
 
         // GET: api/Diets/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Diet>> GetDiet(int id)
+        [HttpGet("[action]/{id}")]
+        public async Task<IActionResult> GetDietById([FromRoute] int id)
         {
             var diet = await _context.Diets.FindAsync(id);
 
@@ -39,54 +50,82 @@ namespace NutricareApp.Web.Controllers
                 return NotFound();
             }
 
-            return diet;
+            return Ok(new DietModel
+            {
+                DietId = diet.DietId,
+                DietName = diet.DietName,
+                DietDescription = diet.DietDescription,
+                CreatedAt = diet.CreatedAt,
+                Appointments = diet.Appointments
+            });
         }
 
         // PUT: api/Diets/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutDiet(int id, Diet diet)
+        [HttpPut("[action]")]
+        public async Task<IActionResult> PutDiet([FromBody] UpdateDietModel model)
         {
-            if (id != diet.DietId)
-            {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            if (model.DietId <= 0)
                 return BadRequest();
-            }
 
-            _context.Entry(diet).State = EntityState.Modified;
+            var diet = await _context.Diets.FirstOrDefaultAsync(c => c.DietId == model.DietId);
+
+            if (diet == null)
+                return NotFound();
+
+            //La Id debe ser la misma
+            diet.DietId = model.DietId;
+            diet.DietName = model.DietName;
+            diet.DietDescription = model.DietDescription;
+            diet.CreatedAt = model.CreatedAt;
+
 
             try
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateConcurrencyException e)
             {
-                if (!DietExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return BadRequest(e.Message);
             }
 
-            return NoContent();
+            return Ok();
         }
 
         // POST: api/Diets
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Diet>> PostDiet(Diet diet)
+        public async Task<IActionResult> PostDiet([FromBody] CreateDietModel model)
         {
-            _context.Diets.Add(diet);
-            await _context.SaveChangesAsync();
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-            return CreatedAtAction("GetDiet", new { id = diet.DietId }, diet);
+            Diet diet = new Diet //Esto es lo que se guarda en BD
+            {
+                DietName = model.DietName,
+                DietDescription = model.DietDescription,
+                CreatedAt = model.CreatedAt,
+            };
+
+            _context.Diets.Add(diet);
+
+            try
+            {
+                await _context.SaveChangesAsync(); //Se guarda en la BD (_context)
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            return Ok();
         }
 
         // DELETE: api/Diets/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteDiet(int id)
+        public async Task<IActionResult> DeleteDiet([FromRoute] int id)
         {
             var diet = await _context.Diets.FindAsync(id);
             if (diet == null)
@@ -95,9 +134,17 @@ namespace NutricareApp.Web.Controllers
             }
 
             _context.Diets.Remove(diet);
-            await _context.SaveChangesAsync();
 
-            return NoContent();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            return Ok();
         }
 
         private bool DietExists(int id)

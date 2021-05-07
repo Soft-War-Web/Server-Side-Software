@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NutricareApp.Data;
 using NutricareApp.Entities;
+using NutricareApp.Web.Models;
 
 namespace NutricareApp.Web.Controllers
 {
@@ -23,70 +24,102 @@ namespace NutricareApp.Web.Controllers
 
         // GET: api/Professionalprofiles
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Professionalprofile>>> GetProfessionalprofiles()
+        public async Task<IEnumerable<ProfessionalprofileModel>> GetProfessionalprofiles()
         {
-            return await _context.Professionalprofiles.ToListAsync();
+            var professionalprofileList = await _context.Professionalprofiles.ToListAsync();
+
+            return professionalprofileList.Select(c => new ProfessionalprofileModel
+            {
+                ProfessionaprofileId = c.ProfessionaprofileId,
+                ProfessionalExperienceDescription = c.ProfessionalExperienceDescription,
+                SpecialtyProfiles = c.SpecialtyProfiles
+            });
         }
 
         // GET: api/Professionalprofiles/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Professionalprofile>> GetProfessionalprofile(int id)
+        [HttpGet("[action]/{id}")]
+        public async Task<IActionResult> GetProfessionalprofileById([FromRoute] int id)
         {
-            var professionalprofile = await _context.Professionalprofiles.FindAsync(id);
+            var profesionalprofile = await _context.Professionalprofiles.FindAsync(id);
 
-            if (professionalprofile == null)
+            if (profesionalprofile == null)
             {
                 return NotFound();
             }
 
-            return professionalprofile;
+            return Ok(new ProfessionalprofileModel
+            {
+                ProfessionaprofileId = profesionalprofile.ProfessionaprofileId,
+                ProfessionalExperienceDescription = profesionalprofile.ProfessionalExperienceDescription,
+                SpecialtyProfiles = profesionalprofile.SpecialtyProfiles
+            });
         }
 
         // PUT: api/Professionalprofiles/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutProfessionalprofile(int id, Professionalprofile professionalprofile)
+        [HttpPut("[action]")]
+        public async Task<IActionResult> PutProfessionalprofile([FromBody] UpdateProfessionalprofileModel model)
         {
-            if (id != professionalprofile.ProfessionaprofileId)
-            {
-                return BadRequest();
-            }
 
-            _context.Entry(professionalprofile).State = EntityState.Modified;
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            if (model.ProfessionaprofileId <= 0)
+                return BadRequest();
+
+            var professionalprofile = await _context.Professionalprofiles.FirstOrDefaultAsync(c => c.ProfessionaprofileId == model.ProfessionaprofileId);
+
+            if (professionalprofile == null)
+                return NotFound();
+
+            //La Id debe ser la misma
+            professionalprofile.ProfessionaprofileId = model.ProfessionaprofileId;
+            professionalprofile.ProfessionalExperienceDescription = model.ProfessionalExperienceDescription;
 
             try
             {
                 await _context.SaveChangesAsync();
             }
-            catch (DbUpdateConcurrencyException)
+            catch (DbUpdateConcurrencyException e)
             {
-                if (!ProfessionalprofileExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return BadRequest(e.Message);
             }
 
-            return NoContent();
+            return Ok();
+
         }
 
         // POST: api/Professionalprofiles
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Professionalprofile>> PostProfessionalprofile(Professionalprofile professionalprofile)
+        public async Task<IActionResult> PostProfessionalprofile([FromBody] CreateProfessionalprofileModel model)
         {
-            _context.Professionalprofiles.Add(professionalprofile);
-            await _context.SaveChangesAsync();
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-            return CreatedAtAction("GetProfessionalprofile", new { id = professionalprofile.ProfessionaprofileId }, professionalprofile);
+            Professionalprofile professionalprofile = new Professionalprofile //Esto es lo que se guarda en BD
+            {
+                ProfessionalExperienceDescription = model.ProfessionalExperienceDescription,
+
+
+            };
+
+            _context.Professionalprofiles.Add(professionalprofile);
+
+            try
+            {
+                await _context.SaveChangesAsync(); //Se guarda en la BD (_context)
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            return Ok();
         }
 
         // DELETE: api/Professionalprofiles/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProfessionalprofile(int id)
+        public async Task<IActionResult> DeleteProfessionalprofile([FromRoute] int id)
         {
             var professionalprofile = await _context.Professionalprofiles.FindAsync(id);
             if (professionalprofile == null)
@@ -95,9 +128,17 @@ namespace NutricareApp.Web.Controllers
             }
 
             _context.Professionalprofiles.Remove(professionalprofile);
-            await _context.SaveChangesAsync();
 
-            return NoContent();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            return Ok();
         }
 
         private bool ProfessionalprofileExists(int id)
