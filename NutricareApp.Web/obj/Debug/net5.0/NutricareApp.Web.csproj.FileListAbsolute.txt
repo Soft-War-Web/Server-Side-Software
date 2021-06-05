@@ -554,3 +554,6 @@ C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Web\obj\Debu
 C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Web\obj\Debug\net5.0\ref\NutricareApp.Web.dll
 C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Web\obj\Debug\net5.0\NutricareApp.Web.pdb
 C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Web\obj\Debug\net5.0\NutricareApp.Web.genruntimeconfig.cache
+C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Web\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Web\bin\Debug\net5.0\xunit.abstractions.dll
+C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Web\bin\Debug\net5.0\xunit.core.dll
