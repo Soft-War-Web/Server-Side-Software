@@ -65,6 +65,8 @@ namespace NutricareApp.NUnit
 
                 var result = await controller.PostRecommendation(_recommendation);
 
+                _context.SaveChanges();
+
                 Assert.True(typeof(OkResult).IsInstanceOfType(result));
             }
         }

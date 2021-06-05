@@ -45,7 +45,7 @@ namespace NutricareApp.NUnit
 
                 var result = await controller.GetRecipes();
 
-                Assert.True(typeof(IEnumerable<ProfessionalprofileModel>).IsInstanceOfType(result));
+                Assert.True(typeof(IEnumerable<RecipeModel>).IsInstanceOfType(result));
                 Assert.AreEqual(4, result.Count());
             }
         }
@@ -68,6 +68,8 @@ namespace NutricareApp.NUnit
                 var controller = new RecipesController(_context);
 
                 var result = await controller.PostRecipe(_recipe);
+
+                _context.SaveChanges();
 
                 Assert.True(typeof(OkResult).IsInstanceOfType(result));
             }

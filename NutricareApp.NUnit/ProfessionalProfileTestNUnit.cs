@@ -61,7 +61,10 @@ namespace NutricareApp.NUnit
                 };
 
                 var controller = new ProfessionalprofilesController(_context);
+
                 var result = await controller.PostProfessionalprofile(_professionalprofile);
+
+                _context.SaveChanges();
 
                 Assert.True(typeof(OkResult).IsInstanceOfType(result));
             }
