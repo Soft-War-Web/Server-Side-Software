@@ -10,6 +10,7 @@ using NutricareApp.Web.Controllers;
 using NutricareApp.Web.Models;
 using System.Threading.Tasks;
 using System;
+using Microsoft.AspNetCore.Mvc;
 
 namespace NutricareApp.NUnit
 {
@@ -34,7 +35,7 @@ namespace NutricareApp.NUnit
         }
 
         [Test]
-        public async Task GetRecipesAsyncReturnAIEnumarableOfRecipes()
+        public async Task GetRecipe()
         {
             using (var _context = new DbContextNutricareApp(_options))
             {
@@ -50,11 +51,11 @@ namespace NutricareApp.NUnit
         }
 
         [Test]
-        public async Task GetRecipeByIdAsyncReturnARecipe()
+        public async Task PostRecipe()
         {
             using (var _context = new DbContextNutricareApp(_options))
             {
-                CreateRecipeModel createRecipeModel = new CreateRecipeModel
+                CreateRecipeModel _recipe = new CreateRecipeModel
                 {
                     Name = "Chaufa",
                     NutritionistId = 1,
@@ -66,9 +67,9 @@ namespace NutricareApp.NUnit
                 };
                 var controller = new RecipesController(_context);
 
-                var result = await controller.GetRecipeById(1);
+                var result = await controller.PostRecipe(_recipe);
 
-                Assert.True(typeof(ProfessionalprofileModel).IsInstanceOfType(result));
+                Assert.True(typeof(OkResult).IsInstanceOfType(result));
             }
         }
 

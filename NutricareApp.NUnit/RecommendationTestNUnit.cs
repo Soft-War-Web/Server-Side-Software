@@ -9,6 +9,7 @@ using System.Text;
 using NutricareApp.Web.Controllers;
 using NutricareApp.Web.Models;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace NutricareApp.NUnit
 {
@@ -32,7 +33,7 @@ namespace NutricareApp.NUnit
         }
 
         [Test]
-        public async Task GetRecommendationsAsyncReturnAIEnumarableOfRecommendations()
+        public async Task GetRecommendation()
         {
             using (var _context = new DbContextNutricareApp(_options))
             {
@@ -48,11 +49,11 @@ namespace NutricareApp.NUnit
         }
 
         [Test]
-        public async Task GetRecommendationByIdAsyncReturnARecommendation()
+        public async Task PostRecommendation()
         {
             using (var _context = new DbContextNutricareApp(_options))
             {
-                CreateRecommendationModel createRecommendationModel = new CreateRecommendationModel
+                CreateRecommendationModel _recommendation = new CreateRecommendationModel
                 {
                     Name = "recomendacion5",
                     NutritionistId = 1,
@@ -62,9 +63,9 @@ namespace NutricareApp.NUnit
                 };
                 var controller = new RecommendationsController(_context);
 
-                var result = await controller.GetRecommendationById(1);
+                var result = await controller.PostRecommendation(_recommendation);
 
-                Assert.True(typeof(RecommendationModel).IsInstanceOfType(result));
+                Assert.True(typeof(OkResult).IsInstanceOfType(result));
             }
         }
 

@@ -17,19 +17,12 @@ namespace NutricareApp.NUnit
     {
         private readonly DbContextOptionsBuilder<DbContextNutricareApp> _builder = new DbContextOptionsBuilder<DbContextNutricareApp>();
         private readonly DbContextOptions<DbContextNutricareApp> _options;
-        private readonly Professionalprofile _professionalprofile;
         private readonly List<Professionalprofile> _professionalprofiles;
 
         public ProfessionalControllerTest()
         {
             _builder.UseInMemoryDatabase("Test");
             _options = _builder.Options;
-            _professionalprofile = new Professionalprofile()
-            {
-                ProfessionalprofileId = 5,
-                NutritionistId = 5,
-                ProfessionalExperienceDescription = "Adolescentes con problemas alimenticios"
-            };
             _professionalprofiles = new List<Professionalprofile>
             {
 
@@ -41,7 +34,7 @@ namespace NutricareApp.NUnit
         }
 
         [Test]
-        public async Task GetProfessionalProfilesAsyncReturnAIEnumarableOfProfessionalProfiles()
+        public async Task GetProfessionalProfile()
         {
             using (var _context = new DbContextNutricareApp(_options))
             {
@@ -57,20 +50,20 @@ namespace NutricareApp.NUnit
         }
 
         [Test]
-        public async Task GetProfessionalProfileByIdAsyncReturnAProfessionalProfile()
+        public async Task PostProfessionalProfile()
         {
             using (var _context = new DbContextNutricareApp(_options))
             {
-                CreateProfessionalprofileModel createProfessionalprofile = new CreateProfessionalprofileModel
+                CreateProfessionalprofileModel _professionalprofile = new CreateProfessionalprofileModel
                 {
                     NutritionistId = 1,
                     ProfessionalExperienceDescription = "Adolescentes con problemas alimenticios"
                 };
 
                 var controller = new ProfessionalprofilesController(_context);
-                var result = await controller.GetProfessionalprofileById(1);
+                var result = await controller.PostProfessionalprofile(_professionalprofile);
 
-                Assert.True(typeof(OkObjectResult).IsInstanceOfType(result));
+                Assert.True(typeof(OkResult).IsInstanceOfType(result));
             }
         }
 
