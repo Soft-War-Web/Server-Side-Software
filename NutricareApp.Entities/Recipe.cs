@@ -41,5 +41,7 @@ namespace NutricareApp.Entities
         public DateTime LastModification { get; set; }
 
         public virtual Nutritionist Nutritionist { get; set; }
+
+        public virtual ICollection<ClientRecipe> ClientRecipes { get; set; }
     }
 }
