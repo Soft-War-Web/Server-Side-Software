@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v5.0": {
       "NutricareApp.Data/1.0.0": {
         "dependencies": {
+          "Microsoft.EntityFrameworkCore": "5.0.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.4",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.4",
           "NutricareApp.Entities": "1.0.0"
