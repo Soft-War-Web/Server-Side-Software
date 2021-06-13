@@ -10,8 +10,8 @@ using NutricareApp.Data;
 namespace NutricareApp.Data.Migrations
 {
     [DbContext(typeof(DbContextNutricareApp))]
-    [Migration("20210507203053_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20210613212817_migration")]
+    partial class migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -113,6 +113,21 @@ namespace NutricareApp.Data.Migrations
                     b.ToTable("client");
                 });
 
+            modelBuilder.Entity("NutricareApp.Entities.ClientRecipe", b =>
+                {
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RecipeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ClientId", "RecipeId");
+
+                    b.HasIndex("RecipeId");
+
+                    b.ToTable("client_recipe");
+                });
+
             modelBuilder.Entity("NutricareApp.Entities.Diet", b =>
                 {
                     b.Property<int>("DietId")
@@ -142,6 +157,21 @@ namespace NutricareApp.Data.Migrations
                     b.HasKey("DietId");
 
                     b.ToTable("diet");
+                });
+
+            modelBuilder.Entity("NutricareApp.Entities.DietRecipe", b =>
+                {
+                    b.Property<int>("DietId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RecipeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("DietId", "RecipeId");
+
+                    b.HasIndex("RecipeId");
+
+                    b.ToTable("diet_recipe");
                 });
 
             modelBuilder.Entity("NutricareApp.Entities.Nutritionist", b =>
@@ -398,6 +428,44 @@ namespace NutricareApp.Data.Migrations
                     b.Navigation("Nutritionist");
                 });
 
+            modelBuilder.Entity("NutricareApp.Entities.ClientRecipe", b =>
+                {
+                    b.HasOne("NutricareApp.Entities.Client", "Client")
+                        .WithMany("ClientRecipes")
+                        .HasForeignKey("ClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NutricareApp.Entities.Recipe", "Recipe")
+                        .WithMany("ClientRecipes")
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Client");
+
+                    b.Navigation("Recipe");
+                });
+
+            modelBuilder.Entity("NutricareApp.Entities.DietRecipe", b =>
+                {
+                    b.HasOne("NutricareApp.Entities.Diet", "Diet")
+                        .WithMany("DietRecipes")
+                        .HasForeignKey("DietId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NutricareApp.Entities.Recipe", "Recipe")
+                        .WithMany("DietRecipes")
+                        .HasForeignKey("RecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Diet");
+
+                    b.Navigation("Recipe");
+                });
+
             modelBuilder.Entity("NutricareApp.Entities.Professionalprofile", b =>
                 {
                     b.HasOne("NutricareApp.Entities.Nutritionist", "Nutritionist")
@@ -456,11 +524,15 @@ namespace NutricareApp.Data.Migrations
             modelBuilder.Entity("NutricareApp.Entities.Client", b =>
                 {
                     b.Navigation("Appointments");
+
+                    b.Navigation("ClientRecipes");
                 });
 
             modelBuilder.Entity("NutricareApp.Entities.Diet", b =>
                 {
                     b.Navigation("Appointments");
+
+                    b.Navigation("DietRecipes");
                 });
 
             modelBuilder.Entity("NutricareApp.Entities.Nutritionist", b =>
@@ -477,6 +549,13 @@ namespace NutricareApp.Data.Migrations
             modelBuilder.Entity("NutricareApp.Entities.Professionalprofile", b =>
                 {
                     b.Navigation("SpecialtyProfiles");
+                });
+
+            modelBuilder.Entity("NutricareApp.Entities.Recipe", b =>
+                {
+                    b.Navigation("ClientRecipes");
+
+                    b.Navigation("DietRecipes");
                 });
 
             modelBuilder.Entity("NutricareApp.Entities.Specialty", b =>

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace NutricareApp.Data.Mapping
 {
-    public class ClientRecipe : IEntityTypeConfiguration<ClientRecipe>
+    public class ClientRecipeMap : IEntityTypeConfiguration<ClientRecipe>
     {
         public void Configure(EntityTypeBuilder<ClientRecipe> builder)
         {

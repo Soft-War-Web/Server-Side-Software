@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NutricareApp.Data.Migrations
 {
-    public partial class FirstMigration : Migration
+    public partial class migration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -201,6 +201,54 @@ namespace NutricareApp.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "client_recipe",
+                columns: table => new
+                {
+                    ClientId = table.Column<int>(type: "int", nullable: false),
+                    RecipeId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_client_recipe", x => new { x.ClientId, x.RecipeId });
+                    table.ForeignKey(
+                        name: "FK_client_recipe_client_ClientId",
+                        column: x => x.ClientId,
+                        principalTable: "client",
+                        principalColumn: "client_id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_client_recipe_recipe_RecipeId",
+                        column: x => x.RecipeId,
+                        principalTable: "recipe",
+                        principalColumn: "category_id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "diet_recipe",
+                columns: table => new
+                {
+                    DietId = table.Column<int>(type: "int", nullable: false),
+                    RecipeId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_diet_recipe", x => new { x.DietId, x.RecipeId });
+                    table.ForeignKey(
+                        name: "FK_diet_recipe_diet_DietId",
+                        column: x => x.DietId,
+                        principalTable: "diet",
+                        principalColumn: "diet_id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_diet_recipe_recipe_RecipeId",
+                        column: x => x.RecipeId,
+                        principalTable: "recipe",
+                        principalColumn: "category_id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_appointment_client_id",
                 table: "appointment",
@@ -215,6 +263,16 @@ namespace NutricareApp.Data.Migrations
                 name: "IX_appointment_nutritionist_id",
                 table: "appointment",
                 column: "nutritionist_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_client_recipe_RecipeId",
+                table: "client_recipe",
+                column: "RecipeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_diet_recipe_RecipeId",
+                table: "diet_recipe",
+                column: "RecipeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_professional_profile_NutritionistId",
@@ -244,7 +302,10 @@ namespace NutricareApp.Data.Migrations
                 name: "appointment");
 
             migrationBuilder.DropTable(
-                name: "recipe");
+                name: "client_recipe");
+
+            migrationBuilder.DropTable(
+                name: "diet_recipe");
 
             migrationBuilder.DropTable(
                 name: "recommendation");
@@ -257,6 +318,9 @@ namespace NutricareApp.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "diet");
+
+            migrationBuilder.DropTable(
+                name: "recipe");
 
             migrationBuilder.DropTable(
                 name: "professional_profile");
