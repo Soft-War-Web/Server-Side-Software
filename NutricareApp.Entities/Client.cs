@@ -35,6 +35,8 @@ namespace NutricareApp.Entities
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime CreatedAt { get; set; }
         public virtual ICollection<Appointment> Appointments { get; set; }
-        public virtual ICollection<ClientRecipe> ClientRecipes { get; set; }
+        public virtual ICollection<Bill> Bills { get; set; }
+        public virtual ICollection<PaymentMethod> PaymentMethods { get; set; }
+        public virtual ICollection<Recipe> Recipes { get; set; }
     }
 }

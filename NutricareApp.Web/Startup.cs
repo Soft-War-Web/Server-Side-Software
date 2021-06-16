@@ -37,6 +37,12 @@ namespace NutricareApp.Web
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "NutricareApp.Web", Version = "v1" });
             });
+            /*
+            services.AddCors(options =>
+            {
+                options.AddPolicy("",
+                    builder => builder.WithOrigins("*").WithHeaders("*").WithMethods("*"));
+            });*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +65,8 @@ namespace NutricareApp.Web
             {
                 endpoints.MapControllers();
             });
+
+            //app.UseCors("");
         }
     }
 }

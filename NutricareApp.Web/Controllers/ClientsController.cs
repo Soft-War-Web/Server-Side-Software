@@ -94,6 +94,54 @@ namespace NutricareApp.Web.Controllers
             return Ok();
         }
 
+        [HttpPut("[action]/{ClientId}/{RecipeId}")]
+        public async Task<IActionResult> AddFavoriteRecipe([FromRoute] int ClientId, [FromRoute] int RecipeId)
+        {
+            var client = await _context.Clients.Include(c => c.Recipes).SingleAsync(c => c.ClientId == ClientId);
+            var recipe = await _context.Recipes.SingleAsync(r => r.RecipeId == RecipeId);
+            if (client == null || recipe == null)
+            {
+                return NotFound();
+            }
+
+            client.Recipes.Add(recipe);
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            return Ok();
+        }
+
+        [HttpPut("[action]/{ClientId}/{RecipeId}")]
+        public async Task<IActionResult> RemoveFavoriteRecipe([FromRoute] int ClientId, [FromRoute] int RecipeId)
+        {
+            var client = await _context.Clients.Include(c => c.Recipes).SingleAsync(c => c.ClientId == ClientId);
+            var recipe = await _context.Recipes.SingleAsync(r => r.RecipeId == RecipeId);
+            if (client == null || recipe == null)
+            {
+                return NotFound();
+            }
+
+            client.Recipes.Remove(recipe);
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            return Ok();
+        }
+
         // POST: api/Clients
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]

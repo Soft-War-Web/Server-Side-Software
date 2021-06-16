@@ -22,6 +22,8 @@ namespace NutricareApp.Web.Models
         [Required(ErrorMessage = "Debe incluir la fecha de creación del cliente")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime CreatedAt { get; set; }
-        public virtual ICollection<Appointment> Appointments { get; set; }
+        public virtual Appointment Appointment { get; set; }
+
+        public virtual IEnumerable<Recipe> Recipes { get; set; }
     }
 }

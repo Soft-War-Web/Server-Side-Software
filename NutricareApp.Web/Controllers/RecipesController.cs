@@ -81,6 +81,7 @@ namespace NutricareApp.Web.Controllers
             recipe.Description = model.Description;
             recipe.Preparation = model.Preparation;
             recipe.Ingredients = model.Ingredients;
+            recipe.LastModification = DateTime.Now;
 
             try
             {

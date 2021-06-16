@@ -42,8 +42,8 @@ namespace NutricareApp.Entities
 
         public virtual Nutritionist Nutritionist { get; set; }
 
-        public virtual ICollection<ClientRecipe> ClientRecipes { get; set; }
+        public virtual ICollection<Client> Clients { get; set; }
 
-        public virtual ICollection<DietRecipe> DietRecipes { get; set; }
+        public virtual ICollection<Diet> Diets { get; set; }
     }
 }

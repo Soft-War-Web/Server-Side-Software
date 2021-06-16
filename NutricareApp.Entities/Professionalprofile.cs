@@ -18,8 +18,8 @@ namespace NutricareApp.Entities
         [StringLength(500, MinimumLength = 10, ErrorMessage = "La descripcion debe tener de entre 10 a 500 caracteres")]
         public string ProfessionalExperienceDescription { get; set; }
 
-        public Nutritionist Nutritionist { get; set; } //posiblemente quitarlo
+        public Nutritionist Nutritionist { get; set; }
 
-        public virtual ICollection<SpecialtyProfile> SpecialtyProfiles { get; set; }
+        public virtual ICollection<Specialty> Specialties { get; set; }
     }
 }

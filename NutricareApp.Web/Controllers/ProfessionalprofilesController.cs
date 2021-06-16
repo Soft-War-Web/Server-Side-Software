@@ -116,6 +116,54 @@ namespace NutricareApp.Web.Controllers
             return Ok();
         }
 
+        [HttpPut("[action]/{ProfessionalProfileId}/{SpecialtyId}")]
+        public async Task<IActionResult> AddSpecialty([FromRoute] int ProfessionalProfileId, [FromRoute] int SpecialtyId)
+        {
+            var professionalprofile = await _context.Professionalprofiles.Include(p => p.Specialties).SingleAsync(p => p.ProfessionalprofileId == ProfessionalProfileId);
+            var specialty = await _context.Specialties.SingleAsync(s => s.SpecialtyId == SpecialtyId);
+            if (professionalprofile == null || specialty == null)
+            {
+                return NotFound();
+            }
+
+            professionalprofile.Specialties.Add(specialty);
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            return Ok();
+        }
+
+        [HttpPut("[action]/{ProfessionalProfileId}/{SpecialtyId}")]
+        public async Task<IActionResult> RemoveSpecialty([FromRoute] int ProfessionalProfileId, [FromRoute] int SpecialtyId)
+        {
+            var professionalprofile = await _context.Professionalprofiles.Include(p => p.Specialties).SingleAsync(p => p.ProfessionalprofileId == ProfessionalProfileId);
+            var specialty = await _context.Specialties.SingleAsync(s => s.SpecialtyId == SpecialtyId);
+            if (professionalprofile == null || specialty == null)
+            {
+                return NotFound();
+            }
+
+            professionalprofile.Specialties.Remove(specialty);
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            return Ok();
+        }
+
         // DELETE: api/Professionalprofiles/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProfessionalprofile([FromRoute] int id)

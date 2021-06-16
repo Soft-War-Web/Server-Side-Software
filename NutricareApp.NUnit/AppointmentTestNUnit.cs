@@ -57,7 +57,6 @@ namespace NutricareApp.NUnit
                 {
                     ClientId = 1,
                     NutritionistId = 1,
-                    DietId = 1,
                     AppointmentDate = DateTime.Parse("2021-06-05T03:49:49.450Z"),
                     NutritionistNotes = "notdsadadasdsadaitas"
                 };
@@ -71,8 +70,5 @@ namespace NutricareApp.NUnit
                 Assert.True(typeof(OkResult).IsInstanceOfType(result));
             }
         }
-
-
-
     }
 }

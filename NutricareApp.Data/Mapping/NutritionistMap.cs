@@ -50,11 +50,6 @@ namespace NutricareApp.Data.Mapping
             builder.Property(c => c.CreatedAt)
                 .HasColumnName("created_at")
                 .HasColumnType("DateTime");
-            /*builder.HasOne<Professionalprofile>(c => c.ProfessionalProfile)
-                .WithOne(c => c.Nutritionist)
-                .HasForeignKey<Professionalprofile>(c => c.ProfessionalprofileId)
-                .HasConstraintName("fk_professional_id")
-                .IsRequired(true);*/
         }
     }
 }
