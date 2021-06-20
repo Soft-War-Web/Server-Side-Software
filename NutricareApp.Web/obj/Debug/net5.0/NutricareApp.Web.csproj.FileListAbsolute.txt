@@ -700,3 +700,6 @@ D:\Projects\C#\Server-Side-Software\NutricareApp.Web\obj\Debug\net5.0\ref\Nutric
 D:\Projects\C#\Server-Side-Software\NutricareApp.Web\obj\Debug\net5.0\NutricareApp.Web.pdb
 D:\Projects\C#\Server-Side-Software\NutricareApp.Web\obj\Debug\net5.0\NutricareApp.Web.genruntimeconfig.cache
 D:\Projects\C#\Server-Side-Software\NutricareApp.Web\bin\Debug\net5.0\NutricareApp.Web.Views.dll
+C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Web\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Web\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\-zL\Documents\GitHub\Server-Side-Software-Web\NutricareApp.Web\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

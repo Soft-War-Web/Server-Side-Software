@@ -10,7 +10,7 @@ using NutricareApp.Data;
 namespace NutricareApp.Data.Migrations
 {
     [DbContext(typeof(DbContextNutricareApp))]
-    [Migration("20210615232822_FirstMigration")]
+    [Migration("20210619232638_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

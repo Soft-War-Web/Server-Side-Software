@@ -59,9 +59,9 @@ namespace NutricareApp.Web.Controllers
                 Appointment = diet.Appointment
             });
         }
-
+        
         [HttpGet("[action]")]
-        public async Task<IEnumerable<Diet>> GetRecipesFromDiet([FromForm] bool strip_nulls = true)
+        public async Task<IEnumerable<Diet>> GetRecipesFromDiet()
         {
             var diet = _context.Diets.AsQueryable();
             diet = diet.Include(d => d.Recipes).AsNoTracking();
