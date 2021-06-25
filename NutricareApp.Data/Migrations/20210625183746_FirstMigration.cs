@@ -103,6 +103,7 @@ namespace NutricareApp.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ClientId = table.Column<int>(type: "int", nullable: false),
                     card_type = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
+                    card_number = table.Column<long>(type: "bigint", nullable: false),
                     expiration_date_month = table.Column<int>(type: "int", nullable: false),
                     expiration_date_year = table.Column<int>(type: "int", nullable: false),
                     security_code = table.Column<int>(type: "int", nullable: false),

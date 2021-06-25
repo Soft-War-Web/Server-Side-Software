@@ -12,6 +12,7 @@ namespace NutricareApp.Web.Models
         public string CardType { get; set; }
         public int ExpirationDateMonth { get; set; }
         public int ExpirationDateYear { get; set; }
+        public long CardNumber { get; set; }
         public int SecurityCode { get; set; }
         public string OwnerFirstName { get; set; }
         public string OwnerLastName { get; set; }

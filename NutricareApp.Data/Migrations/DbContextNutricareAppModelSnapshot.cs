@@ -284,6 +284,10 @@ namespace NutricareApp.Data.Migrations
                         .HasColumnType("varchar(200)")
                         .HasColumnName("billing_address_line2");
 
+                    b.Property<long>("CardNumber")
+                        .HasColumnType("bigint")
+                        .HasColumnName("card_number");
+
                     b.Property<string>("CardType")
                         .IsRequired()
                         .HasMaxLength(50)

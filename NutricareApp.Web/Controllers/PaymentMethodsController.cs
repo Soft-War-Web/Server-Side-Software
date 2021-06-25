@@ -34,6 +34,7 @@ namespace NutricareApp.Web.Controllers
                 CardType = c.CardType,
                 ExpirationDateMonth = c.ExpirationDateMonth,
                 ExpirationDateYear = c.ExpirationDateYear,
+                CardNumber = c.CardNumber,
                 SecurityCode = c.SecurityCode,
                 OwnerFirstName = c.OwnerFirstName,
                 OwnerLastName = c.OwnerLastName,
@@ -64,6 +65,7 @@ namespace NutricareApp.Web.Controllers
                 CardType = paymentMethod.CardType,
                 ExpirationDateMonth = paymentMethod.ExpirationDateMonth,
                 ExpirationDateYear = paymentMethod.ExpirationDateYear,
+                CardNumber = paymentMethod.CardNumber,
                 SecurityCode = paymentMethod.SecurityCode,
                 OwnerFirstName = paymentMethod.OwnerFirstName,
                 OwnerLastName = paymentMethod.OwnerLastName,
@@ -95,6 +97,7 @@ namespace NutricareApp.Web.Controllers
                 CardType = c.CardType,
                 ExpirationDateMonth = c.ExpirationDateMonth,
                 ExpirationDateYear = c.ExpirationDateYear,
+                CardNumber = c.CardNumber,
                 SecurityCode = c.SecurityCode,
                 OwnerFirstName = c.OwnerFirstName,
                 OwnerLastName = c.OwnerLastName,
@@ -128,6 +131,7 @@ namespace NutricareApp.Web.Controllers
             paymentMethod.CardType = model.CardType;
             paymentMethod.ExpirationDateMonth = model.ExpirationDateMonth;
             paymentMethod.ExpirationDateYear = model.ExpirationDateYear;
+            paymentMethod.CardNumber = model.CardNumber;
             paymentMethod.SecurityCode = model.SecurityCode;
             paymentMethod.OwnerFirstName = model.OwnerFirstName;
             paymentMethod.OwnerLastName = model.OwnerLastName;
@@ -164,6 +168,7 @@ namespace NutricareApp.Web.Controllers
                 CardType = model.CardType,
                 ExpirationDateMonth = model.ExpirationDateMonth,
                 ExpirationDateYear = model.ExpirationDateYear,
+                CardNumber = model.CardNumber,
                 SecurityCode = model.SecurityCode,
                 OwnerFirstName = model.OwnerFirstName,
                 OwnerLastName = model.OwnerLastName,

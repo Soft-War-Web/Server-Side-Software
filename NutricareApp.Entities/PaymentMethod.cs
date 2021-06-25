@@ -18,6 +18,9 @@ namespace NutricareApp.Entities
         [StringLength(50, ErrorMessage = "El tipo de tarjeta no debe tener más de 50 caracteres")]
         public string CardType { get; set; }
 
+        [Required(ErrorMessage = "Debe incluir el número de tarjeta")]
+        public long CardNumber { get; set; }
+
         [Required(ErrorMessage = "Debe incluir el mes de la fecha de expiracion")]
         public int ExpirationDateMonth { get; set; }
 

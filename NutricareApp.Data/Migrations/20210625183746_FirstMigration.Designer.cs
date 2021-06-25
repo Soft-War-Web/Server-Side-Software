@@ -10,7 +10,7 @@ using NutricareApp.Data;
 namespace NutricareApp.Data.Migrations
 {
     [DbContext(typeof(DbContextNutricareApp))]
-    [Migration("20210619232638_FirstMigration")]
+    [Migration("20210625183746_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -285,6 +285,10 @@ namespace NutricareApp.Data.Migrations
                         .IsUnicode(false)
                         .HasColumnType("varchar(200)")
                         .HasColumnName("billing_address_line2");
+
+                    b.Property<long>("CardNumber")
+                        .HasColumnType("bigint")
+                        .HasColumnName("card_number");
 
                     b.Property<string>("CardType")
                         .IsRequired()

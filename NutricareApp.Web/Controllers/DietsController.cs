@@ -60,13 +60,22 @@ namespace NutricareApp.Web.Controllers
             });
         }
         
-        [HttpGet("[action]")]
-        public async Task<IEnumerable<Diet>> GetRecipesFromDiet()
+        [HttpGet("[action]/{DietId}")]
+        public async Task<IEnumerable<RecipeModel>> GetRecipesFromDiet([FromRoute] int DietId)
         {
-            var diet = _context.Diets.AsQueryable();
-            diet = diet.Include(d => d.Recipes).AsNoTracking();
-            List<Diet> _return = await diet.ToListAsync();
-            return _return;
+            var diets = await _context.Diets
+                                    .Include(d => d.Recipes)
+                                    .FirstOrDefaultAsync(d => d.DietId == DietId);
+            var recipes = diets.Recipes.ToList();
+            return recipes.Select(c => new RecipeModel
+            {
+                RecipeId = c.RecipeId,
+                NutritionistId = c.NutritionistId,
+                Name = c.Name,
+                Ingredients = c.Ingredients,
+                Description = c.Description,
+                Preparation = c.Preparation
+            });
         }
 
         // PUT: api/Diets/5

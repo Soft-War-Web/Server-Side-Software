@@ -25,15 +25,15 @@ namespace NutricareApp.NUnit
             _options = _builder.Options;
             _paymentMethods = new List<PaymentMethod>
             {
-                new PaymentMethod { PaymentMethodId = 1, ClientId = 1, CardType = "tarjeta", City = "Lima", Country = "Perú", ExpirationDateMonth = 05, ExpirationDateYear = 2025, PostalCode = "01503", SecurityCode = 335, BillingAddress = "direccion1", BillingAddressLine2 = "direccion2", OwnerFirstName = "Josue", OwnerLastName = "Cuentas", PhoneNumber = 123456789},
-                new PaymentMethod { PaymentMethodId = 2, ClientId = 1, CardType = "tarjeta", City = "Lima", Country = "Perú", ExpirationDateMonth = 05, ExpirationDateYear = 2025, PostalCode = "01503", SecurityCode = 335, BillingAddress = "direccion1", BillingAddressLine2 = "direccion2", OwnerFirstName = "Josue", OwnerLastName = "Cuentas", PhoneNumber = 123456789},
-                new PaymentMethod { PaymentMethodId = 3, ClientId = 1, CardType = "tarjeta", City = "Lima", Country = "Perú", ExpirationDateMonth = 05, ExpirationDateYear = 2025, PostalCode = "01503", SecurityCode = 335, BillingAddress = "direccion1", BillingAddressLine2 = "direccion2", OwnerFirstName = "Josue", OwnerLastName = "Cuentas", PhoneNumber = 123456789},
-                new PaymentMethod { PaymentMethodId = 4, ClientId = 1, CardType = "tarjeta", City = "Lima", Country = "Perú", ExpirationDateMonth = 05, ExpirationDateYear = 2025, PostalCode = "01503", SecurityCode = 335, BillingAddress = "direccion1", BillingAddressLine2 = "direccion2", OwnerFirstName = "Josue", OwnerLastName = "Cuentas", PhoneNumber = 123456789},
+                new PaymentMethod { PaymentMethodId = 1, ClientId = 1, CardType = "tarjeta", CardNumber = 1000000000000, City = "Lima", Country = "Perú", ExpirationDateMonth = 05, ExpirationDateYear = 2025, PostalCode = "01503", SecurityCode = 335, BillingAddress = "direccion1", BillingAddressLine2 = "direccion2", OwnerFirstName = "Josue", OwnerLastName = "Cuentas", PhoneNumber = 123456789},
+                new PaymentMethod { PaymentMethodId = 2, ClientId = 1, CardType = "tarjeta", CardNumber = 1000000000000, City = "Lima", Country = "Perú", ExpirationDateMonth = 05, ExpirationDateYear = 2025, PostalCode = "01503", SecurityCode = 335, BillingAddress = "direccion1", BillingAddressLine2 = "direccion2", OwnerFirstName = "Josue", OwnerLastName = "Cuentas", PhoneNumber = 123456789},
+                new PaymentMethod { PaymentMethodId = 3, ClientId = 1, CardType = "tarjeta", CardNumber = 1000000000000, City = "Lima", Country = "Perú", ExpirationDateMonth = 05, ExpirationDateYear = 2025, PostalCode = "01503", SecurityCode = 335, BillingAddress = "direccion1", BillingAddressLine2 = "direccion2", OwnerFirstName = "Josue", OwnerLastName = "Cuentas", PhoneNumber = 123456789},
+                new PaymentMethod { PaymentMethodId = 4, ClientId = 1, CardType = "tarjeta", CardNumber = 1000000000000, City = "Lima", Country = "Perú", ExpirationDateMonth = 05, ExpirationDateYear = 2025, PostalCode = "01503", SecurityCode = 335, BillingAddress = "direccion1", BillingAddressLine2 = "direccion2", OwnerFirstName = "Josue", OwnerLastName = "Cuentas", PhoneNumber = 123456789},
             };
         }
 
         [Test]
-        public async Task GetBills()
+        public async Task GetPaymentMethods()
         {
             using (var _context = new DbContextNutricareApp(_options))
             {
@@ -59,6 +59,7 @@ namespace NutricareApp.NUnit
                     CardType = "tarjeta",
                     City = "Lima",
                     Country = "Perú",
+                    CardNumber = 1000000000000,
                     ExpirationDateMonth = 05,
                     ExpirationDateYear = 2025,
                     PostalCode = "01503",

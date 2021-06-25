@@ -64,6 +64,21 @@ namespace NutricareApp.Web.Controllers
             });
         }
 
+        [HttpGet("[action]/{NutritionistId}")]
+        public async Task<IEnumerable<SpecialtyModel>> GetSpecialtiesFromNutritionist([FromRoute] int NutritionistId)
+        {
+            var professionalprofile = await _context.Professionalprofiles
+                                    .Include(d => d.Specialties)
+                                    .FirstOrDefaultAsync(d => d.NutritionistId == NutritionistId);
+            var specialties = professionalprofile.Specialties.ToList();
+            return specialties.Select(c => new SpecialtyModel
+            {
+                SpecialtyId = c.SpecialtyId,
+                SpecialtyName = c.SpecialtyName,
+                InstitutionName = c.InstitutionName
+            });
+        }
+
 
         // PUT: api/Nutritionists/PutNutritionist
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

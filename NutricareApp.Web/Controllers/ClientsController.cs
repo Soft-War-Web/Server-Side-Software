@@ -60,6 +60,24 @@ namespace NutricareApp.Web.Controllers
             });
         }
 
+        [HttpGet("[action]/{ClientId}")]
+        public async Task<IEnumerable<RecipeModel>> GetRecipesFromClient([FromRoute] int ClientId)
+        {
+            var diets = await _context.Clients
+                                    .Include(d => d.Recipes)
+                                    .FirstOrDefaultAsync(d => d.ClientId == ClientId);
+            var recipes = diets.Recipes.ToList();
+            return recipes.Select(c => new RecipeModel
+            {
+                RecipeId = c.RecipeId,
+                NutritionistId = c.NutritionistId,
+                Name = c.Name,
+                Ingredients = c.Ingredients,
+                Description = c.Description,
+                Preparation = c.Preparation
+            });
+        }
+
         // PUT: api/Clients/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("[action]")]

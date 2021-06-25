@@ -23,6 +23,9 @@ namespace NutricareApp.Web.Models
         [Required(ErrorMessage = "Debe incluir el año de la fecha de expiracion")]
         public int ExpirationDateYear { get; set; }
 
+        [Required(ErrorMessage = "Debe incluir el número de la tarjeta")]
+        public long CardNumber { get; set; }
+
         [Required(ErrorMessage = "Debe incluir el codigo de seguridad")]
         public int SecurityCode { get; set; }
 

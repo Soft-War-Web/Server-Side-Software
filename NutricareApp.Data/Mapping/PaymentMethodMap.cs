@@ -26,6 +26,8 @@ namespace NutricareApp.Data.Mapping
                 .HasColumnName("expiration_date_month");
             builder.Property(c => c.ExpirationDateYear)
                 .HasColumnName("expiration_date_year");
+            builder.Property(c => c.CardNumber)
+                .HasColumnName("card_number");
             builder.Property(c => c.SecurityCode)
                 .HasColumnName("security_code");
             builder.Property(c => c.OwnerFirstName)
