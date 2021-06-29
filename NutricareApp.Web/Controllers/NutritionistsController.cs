@@ -35,6 +35,7 @@ namespace NutricareApp.Web.Controllers
                 Username = c.Username,
                 FirstName = c.FirstName,
                 LastName = c.LastName,
+                Password = c.Password,
                 CnpNumber = c.CnpNumber,
                 Email = c.Email
             });
@@ -59,6 +60,7 @@ namespace NutricareApp.Web.Controllers
                 Username = nutritionist.Username,
                 FirstName = nutritionist.FirstName,
                 LastName = nutritionist.LastName,
+                Password = nutritionist.Password,
                 CnpNumber = nutritionist.CnpNumber,
                 Email = nutritionist.Email
             });
@@ -128,7 +130,7 @@ namespace NutricareApp.Web.Controllers
             {
                 //ProfessionalProfileId = model.ProfessionalProfileId,
                 Username = model.Username,
-                Password = model.Password, //Se debe encriptar para que se guarde así en la BD (FALTA)
+                Password = model.Password,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Email = model.Email,

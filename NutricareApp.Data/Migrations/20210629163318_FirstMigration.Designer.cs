@@ -10,7 +10,7 @@ using NutricareApp.Data;
 namespace NutricareApp.Data.Migrations
 {
     [DbContext(typeof(DbContextNutricareApp))]
-    [Migration("20210625183746_FirstMigration")]
+    [Migration("20210629163318_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -403,9 +403,9 @@ namespace NutricareApp.Data.Migrations
                         .HasColumnType("varchar(250)")
                         .HasColumnName("description");
 
-                    b.Property<int>("Favorite")
+                    b.Property<int>("Favorites")
                         .HasColumnType("int")
-                        .HasColumnName("favorite");
+                        .HasColumnName("favorites");
 
                     b.Property<string>("Ingredients")
                         .IsRequired()

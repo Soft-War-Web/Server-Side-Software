@@ -401,9 +401,9 @@ namespace NutricareApp.Data.Migrations
                         .HasColumnType("varchar(250)")
                         .HasColumnName("description");
 
-                    b.Property<int>("Favorite")
+                    b.Property<int>("Favorites")
                         .HasColumnType("int")
-                        .HasColumnName("favorite");
+                        .HasColumnName("favorites");
 
                     b.Property<string>("Ingredients")
                         .IsRequired()

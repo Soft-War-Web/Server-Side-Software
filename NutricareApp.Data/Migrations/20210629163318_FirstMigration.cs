@@ -193,7 +193,7 @@ namespace NutricareApp.Data.Migrations
                     description = table.Column<string>(type: "varchar(250)", unicode: false, maxLength: 250, nullable: false),
                     preparation = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     ingredients = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    favorite = table.Column<int>(type: "int", nullable: false),
+                    favorites = table.Column<int>(type: "int", nullable: false),
                     created_At = table.Column<DateTime>(type: "DateTime", nullable: false),
                     last_modification = table.Column<DateTime>(type: "DateTime", nullable: false)
                 },

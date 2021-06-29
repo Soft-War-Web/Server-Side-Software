@@ -34,7 +34,8 @@ namespace NutricareApp.Web.Controllers
                 Name = c.Name,
                 Description = c.Description,
                 Preparation = c.Preparation,
-                Ingredients = c.Ingredients
+                Ingredients = c.Ingredients,
+                Favorites = c.Favorites
             });
         }
 
@@ -56,7 +57,8 @@ namespace NutricareApp.Web.Controllers
                 Name = recipe.Name,
                 Description = recipe.Description,
                 Preparation = recipe.Preparation,
-                Ingredients = recipe.Ingredients
+                Ingredients = recipe.Ingredients,
+                Favorites = recipe.Favorites
             });
         }
 
@@ -82,6 +84,7 @@ namespace NutricareApp.Web.Controllers
             recipe.Preparation = model.Preparation;
             recipe.Ingredients = model.Ingredients;
             recipe.LastModification = DateTime.Now;
+            recipe.Favorites = model.Favorites;
 
             try
             {
@@ -107,6 +110,7 @@ namespace NutricareApp.Web.Controllers
             {
                 NutritionistId = model.NutritionistId,
                 Name = model.Name,
+                Favorites = 0,
                 Description = model.Description,
                 Preparation = model.Preparation,
                 Ingredients = model.Ingredients,

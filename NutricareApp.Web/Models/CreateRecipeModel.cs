@@ -18,6 +18,8 @@ namespace NutricareApp.Web.Models
         [StringLength(250, MinimumLength = 50, ErrorMessage = "la descripcion de la receta debe tener de 50 a 250 caracteres")]
         public string Description { get; set; }
 
+        public int Favorites { get; set; }
+
         [StringLength(500, MinimumLength = 50, ErrorMessage = "la preparacion de la receta debe tener de 50 a 500 caracteres")]
         public string Preparation { get; set; }
 

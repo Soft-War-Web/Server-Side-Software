@@ -30,7 +30,7 @@ namespace NutricareApp.Entities
         [StringLength(500, MinimumLength = 50, ErrorMessage = "los ingredientes de la receta debe tener de 50 a 500 caracteres")]
         public string Ingredients { get; set; }
 
-        public int Favorite { get; set; }
+        public int Favorites { get; set; }
 
         [Required(ErrorMessage = "Debe incluir la fecha de creacion de la receta")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
