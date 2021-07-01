@@ -87,15 +87,9 @@ namespace NutricareApp.Web.Controllers
         public async Task<IEnumerable<BillModel>> GetBillByClient([FromRoute] int id)
         {
             var billList = await _context.Bills.ToListAsync();
-            List<Bill> bills = new List<Bill>();
+            var clientbills = billList.Where(b => b.ClientId == id);
 
-            foreach (Bill bill in billList)
-            {
-                if (bill.ClientId == id)
-                    bills.Add(bill);
-            }
-
-            return bills.Select(c => new BillModel
+            return clientbills.Select(c => new BillModel
             {
                 BillId = c.BillId,
                 ClientId = c.ClientId,
