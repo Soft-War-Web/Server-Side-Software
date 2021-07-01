@@ -55,6 +55,25 @@ namespace NutricareApp.Web.Controllers
             });
         }
 
+        [HttpGet("[action]/{NutritionistId}")]
+        public async Task<IActionResult> GetProfessionalprofileByNutritionist([FromRoute] int NutritionistId)
+        {
+            var profesionalprofilelist = await _context.Professionalprofiles.ToListAsync();
+            Professionalprofile professionalprofile = profesionalprofilelist.Single(p => p.NutritionistId == NutritionistId);
+
+            if (professionalprofile == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(new ProfessionalprofileModel
+            {
+                ProfessionalprofileId = professionalprofile.ProfessionalprofileId,
+                NutritionistId = professionalprofile.NutritionistId,
+                ProfessionalExperienceDescription = professionalprofile.ProfessionalExperienceDescription
+            });
+        }
+
         // PUT: api/Professionalprofiles/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("[action]")]
