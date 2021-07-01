@@ -15,19 +15,19 @@ namespace NutricareApp.Entities
         public int NutritionistId { get; set; }
 
         [Required(ErrorMessage = "Debe incluir el nombre de la receta")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "El nombre de la receta debe tener de 3 a 50 caracteres")]
+        [StringLength(50, ErrorMessage = "El nombre de la receta debe hasta 50 caracteres")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Debe incluir la descripcion de la receta")]
-        [StringLength(250, MinimumLength = 50, ErrorMessage = "la descripcion de la receta debe tener de 50 a 250 caracteres")]
+        [StringLength(250, ErrorMessage = "la descripcion de la receta no debe tener más 250 caracteres")]
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Debe incluir la preparacion de la receta")]
-        [StringLength(500, MinimumLength = 50, ErrorMessage = "la preparacion de la receta debe tener de 50 a 500 caracteres")]
+        [StringLength(500, ErrorMessage = "la preparacion de la receta no debe tener más 500 caracteres")]
         public string Preparation { get; set; }
 
         [Required(ErrorMessage = "Debe incluir los ingredientes de la receta")]
-        [StringLength(500, MinimumLength = 50, ErrorMessage = "los ingredientes de la receta debe tener de 50 a 500 caracteres")]
+        [StringLength(500, ErrorMessage = "los ingredientes de la receta no deben tener más 500 caracteres")]
         public string Ingredients { get; set; }
 
         public int Favorites { get; set; }

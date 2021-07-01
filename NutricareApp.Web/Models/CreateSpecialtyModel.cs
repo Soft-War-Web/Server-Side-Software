@@ -10,11 +10,11 @@ namespace NutricareApp.Web.Models
     {
 
         [Required(ErrorMessage = "Debe incluir un nombre")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "El nombre debe tener de entre 3 a 50 caracteres")]
+        [StringLength(50, ErrorMessage = "El nombre debe tener hasta 50 caracteres")]
         public string SpecialtyName { get; set; }
 
         [Required(ErrorMessage = "Debe incluir una institucion")]
-        [StringLength(50, MinimumLength = 6, ErrorMessage = "La descripcion debe tener de entre 6 a 50 caracteres")]
+        [StringLength(50, ErrorMessage = "La descripcion debe tener hasta 50 caracteres")]
         public string InstitutionName { get; set; }
     }
 }

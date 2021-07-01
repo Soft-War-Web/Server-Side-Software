@@ -13,7 +13,7 @@ namespace NutricareApp.Web.Models
         public string Username { get; set; }
 
         [Required(ErrorMessage = "Debe incluir la contraseña del cliente")]
-        [StringLength(60, MinimumLength = 5, ErrorMessage = "La contraseña del cliente debe tener 60 caracteres")]
+        [StringLength(60, ErrorMessage = "La contraseña del cliente debe tener hasta 60 caracteres")]
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Debe incluir el nombre del cliente")]

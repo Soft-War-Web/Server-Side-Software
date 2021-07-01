@@ -56,7 +56,28 @@ namespace NutricareApp.Web.Controllers
             return Ok(new NutritionistModel
             {
                 NutritionistId = nutritionist.NutritionistId,
-                //ProfessionalProfileId = nutritionist.ProfessionalProfileId,
+                Username = nutritionist.Username,
+                FirstName = nutritionist.FirstName,
+                LastName = nutritionist.LastName,
+                Password = nutritionist.Password,
+                CnpNumber = nutritionist.CnpNumber,
+                Email = nutritionist.Email
+            });
+        }
+
+        [HttpGet("[action]/{email}")]
+        public async Task<IActionResult> GetNutritionistByEmail([FromRoute] string email)
+        {
+            var nutritionist = await _context.Nutritionists.SingleAsync(c => c.Email == email);
+
+            if (nutritionist == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(new NutritionistModel
+            {
+                NutritionistId = nutritionist.NutritionistId,
                 Username = nutritionist.Username,
                 FirstName = nutritionist.FirstName,
                 LastName = nutritionist.LastName,

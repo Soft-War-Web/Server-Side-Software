@@ -10,7 +10,7 @@ using NutricareApp.Data;
 namespace NutricareApp.Data.Migrations
 {
     [DbContext(typeof(DbContextNutricareApp))]
-    [Migration("20210629163318_FirstMigration")]
+    [Migration("20210701145743_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -160,7 +160,7 @@ namespace NutricareApp.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(60)
                         .IsUnicode(false)
-                        .HasColumnType("char(60)")
+                        .HasColumnType("varchar(60)")
                         .HasColumnName("password");
 
                     b.Property<string>("Username")
@@ -249,7 +249,7 @@ namespace NutricareApp.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(60)
                         .IsUnicode(false)
-                        .HasColumnType("char(60)")
+                        .HasColumnType("varchar(60)")
                         .HasColumnName("password");
 
                     b.Property<string>("Username")

@@ -60,6 +60,27 @@ namespace NutricareApp.Web.Controllers
             });
         }
 
+        [HttpGet("[action]/{email}")]
+        public async Task<IActionResult> GetClientByEmail([FromRoute] string email)
+        {
+            var client = await _context.Clients.SingleAsync(c => c.Email == email);
+
+            if (client == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(new ClientModel
+            {
+                ClientId = client.ClientId,
+                Username = client.Username,
+                Password = client.Password,
+                FirstName = client.FirstName,
+                LastName = client.LastName,
+                Email = client.Email
+            });
+        }
+
         [HttpGet("[action]/{ClientId}")]
         public async Task<IEnumerable<RecipeModel>> GetRecipesFromClient([FromRoute] int ClientId)
         {

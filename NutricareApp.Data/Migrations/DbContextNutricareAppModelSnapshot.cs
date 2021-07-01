@@ -158,7 +158,7 @@ namespace NutricareApp.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(60)
                         .IsUnicode(false)
-                        .HasColumnType("char(60)")
+                        .HasColumnType("varchar(60)")
                         .HasColumnName("password");
 
                     b.Property<string>("Username")
@@ -247,7 +247,7 @@ namespace NutricareApp.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(60)
                         .IsUnicode(false)
-                        .HasColumnType("char(60)")
+                        .HasColumnType("varchar(60)")
                         .HasColumnName("password");
 
                     b.Property<string>("Username")

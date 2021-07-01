@@ -14,7 +14,7 @@ namespace NutricareApp.Data.Migrations
                     client_id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     username = table.Column<string>(type: "varchar(16)", unicode: false, maxLength: 16, nullable: false),
-                    password = table.Column<string>(type: "char(60)", unicode: false, maxLength: 60, nullable: false),
+                    password = table.Column<string>(type: "varchar(60)", unicode: false, maxLength: 60, nullable: false),
                     firstname = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
                     lastname = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
                     email = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
@@ -47,7 +47,7 @@ namespace NutricareApp.Data.Migrations
                     nutritionist_id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     username = table.Column<string>(type: "varchar(16)", unicode: false, maxLength: 16, nullable: false),
-                    password = table.Column<string>(type: "char(60)", unicode: false, maxLength: 60, nullable: false),
+                    password = table.Column<string>(type: "varchar(60)", unicode: false, maxLength: 60, nullable: false),
                     firstname = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
                     lastname = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
                     email = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
