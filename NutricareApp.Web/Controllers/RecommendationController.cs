@@ -36,11 +36,11 @@ namespace NutricareApp.Web.Controllers
             });
         }
 
-        [HttpGet("[action]/{id}")]
-        public async Task<IEnumerable<RecommendationModel>> GetRecommendationsFromNutritionist([FromRoute] int id)
+        [HttpGet("[action]/{NutritionistId}")]
+        public async Task<IEnumerable<RecommendationModel>> GetRecommendationsFromNutritionist([FromRoute] int NutritionistId)
         {
             var recommendationList = await _context.Recommendations.ToListAsync();
-            var recommendationNutritionistList = recommendationList.Where(r => r.NutritionistId == id);
+            var recommendationNutritionistList = recommendationList.Where(r => r.NutritionistId == NutritionistId);
             return recommendationNutritionistList.Select(c => new RecommendationModel
             {
                 RecommendationId = c.RecommendationId,

@@ -83,11 +83,11 @@ namespace NutricareApp.Web.Controllers
             });
         }
 
-        [HttpGet("[action]/{id}")]
-        public async Task<IEnumerable<BillModel>> GetBillByClient([FromRoute] int id)
+        [HttpGet("[action]/{ClientId}")]
+        public async Task<IEnumerable<BillModel>> GetBillByClient([FromRoute] int ClientId)
         {
             var billList = await _context.Bills.ToListAsync();
-            var clientbills = billList.Where(b => b.ClientId == id);
+            var clientbills = billList.Where(b => b.ClientId == ClientId);
 
             return clientbills.Select(c => new BillModel
             {

@@ -78,19 +78,13 @@ namespace NutricareApp.Web.Controllers
             });
         }
 
-        [HttpGet("[action]/{id}")]
-        public async Task<IEnumerable<PaymentMethodModel>> GetPaymentMethodByClient([FromRoute] int id)
+        [HttpGet("[action]/{ClientId}")]
+        public async Task<IEnumerable<PaymentMethodModel>> GetPaymentMethodByClient([FromRoute] int ClientId)
         {
             var paymentMethodList = await _context.PaymentMethods.ToListAsync();
-            List<PaymentMethod> paymentMethods = new List<PaymentMethod>();
+            var clientPaymentMethods = paymentMethodList.Where(p => p.ClientId == ClientId);
 
-            foreach (PaymentMethod paymentMethod in paymentMethodList)
-            {
-                if (paymentMethod.ClientId == id)
-                    paymentMethods.Add(paymentMethod);
-            }
-
-            return paymentMethods.Select(c => new PaymentMethodModel
+            return clientPaymentMethods.Select(c => new PaymentMethodModel
             {
                 PaymentMethodId = c.PaymentMethodId,
                 ClientId = c.ClientId,
