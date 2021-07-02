@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using NutricareApp.Data;
 using NutricareApp.Entities;
 using NutricareApp.Web.Models;
@@ -34,8 +35,7 @@ namespace NutricareApp.Web.Controllers
                 DietName = c.DietName,
                 DietDescription = c.DietDescription,
                 CreatedAt = c.CreatedAt,
-                Appointments = c.Appointments
-        
+                Appointment = c.Appointment,
             });
         }
 
@@ -56,7 +56,45 @@ namespace NutricareApp.Web.Controllers
                 DietName = diet.DietName,
                 DietDescription = diet.DietDescription,
                 CreatedAt = diet.CreatedAt,
-                Appointments = diet.Appointments
+                Appointment = diet.Appointment
+            });
+        }
+        
+        [HttpGet("[action]/{DietId}")]
+        public async Task<IEnumerable<RecipeModel>> GetRecipesFromDiet([FromRoute] int DietId)
+        {
+            var diets = await _context.Diets
+                                    .Include(d => d.Recipes)
+                                    .FirstOrDefaultAsync(d => d.DietId == DietId);
+            var recipes = diets.Recipes.ToList();
+            return recipes.Select(c => new RecipeModel
+            {
+                RecipeId = c.RecipeId,
+                NutritionistId = c.NutritionistId,
+                Name = c.Name,
+                Ingredients = c.Ingredients,
+                Description = c.Description,
+                Preparation = c.Preparation
+            });
+        }
+
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetLastDiet()
+        {
+            var diet = await _context.Diets.OrderByDescending(a => a.DietId).FirstOrDefaultAsync();
+
+            if (diet == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(new DietModel
+            {
+                DietId = diet.DietId,
+                DietName = diet.DietName,
+                DietDescription = diet.DietDescription,
+                CreatedAt = diet.CreatedAt,
+                Appointment = diet.Appointment
             });
         }
 
@@ -81,6 +119,54 @@ namespace NutricareApp.Web.Controllers
             diet.DietDescription = model.DietDescription;
             diet.CreatedAt = model.CreatedAt;
 
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            return Ok();
+        }
+
+        [HttpPut("[action]/{DietId}/{RecipeId}")]
+        public async Task<IActionResult> AddRecipe([FromRoute] int DietId, [FromRoute] int RecipeId)
+        {
+            var diet = await _context.Diets.Include(d => d.Recipes).SingleAsync(d => d.DietId == DietId);
+            var recipe = await _context.Recipes.SingleAsync(r => r.RecipeId == RecipeId);
+            if (diet == null || recipe == null)
+            {
+                return NotFound();
+            }
+
+            diet.Recipes.Add(recipe);
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            return Ok();
+        }
+
+        [HttpPut("[action]/{DietId}/{RecipeId}")]
+        public async Task<IActionResult> RemoveRecipe([FromRoute] int DietId, [FromRoute] int RecipeId)
+        {
+            var diet = await _context.Diets.Include(d => d.Recipes).SingleAsync(d => d.DietId == DietId);
+            var recipe = await _context.Recipes.SingleAsync(r => r.RecipeId == RecipeId);
+            if (diet == null || recipe == null)
+            {
+                return NotFound();
+            }
+
+            diet.Recipes.Remove(recipe);
 
             try
             {

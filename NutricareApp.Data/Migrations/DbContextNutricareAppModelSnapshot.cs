@@ -16,8 +16,38 @@ namespace NutricareApp.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.4")
+                .HasAnnotation("ProductVersion", "5.0.6")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("ClientRecipe", b =>
+                {
+                    b.Property<int>("ClientsClientId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RecipesRecipeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ClientsClientId", "RecipesRecipeId");
+
+                    b.HasIndex("RecipesRecipeId");
+
+                    b.ToTable("ClientRecipe");
+                });
+
+            modelBuilder.Entity("DietRecipe", b =>
+                {
+                    b.Property<int>("DietsDietId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RecipesRecipeId")
+                        .HasColumnType("int");
+
+                    b.HasKey("DietsDietId", "RecipesRecipeId");
+
+                    b.HasIndex("RecipesRecipeId");
+
+                    b.ToTable("DietRecipe");
+                });
 
             modelBuilder.Entity("NutricareApp.Entities.Appointment", b =>
                 {
@@ -35,7 +65,7 @@ namespace NutricareApp.Data.Migrations
                         .HasColumnType("int")
                         .HasColumnName("client_id");
 
-                    b.Property<int>("DietId")
+                    b.Property<int?>("DietId")
                         .HasColumnType("int")
                         .HasColumnName("diet_id");
 
@@ -52,11 +82,43 @@ namespace NutricareApp.Data.Migrations
 
                     b.HasIndex("ClientId");
 
-                    b.HasIndex("DietId");
+                    b.HasIndex("DietId")
+                        .IsUnique()
+                        .HasFilter("[diet_id] IS NOT NULL");
 
                     b.HasIndex("NutritionistId");
 
                     b.ToTable("appointment");
+                });
+
+            modelBuilder.Entity("NutricareApp.Entities.Bill", b =>
+                {
+                    b.Property<int>("BillId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("bill_id")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("decimal")
+                        .HasColumnName("amount");
+
+                    b.Property<DateTime>("BillDate")
+                        .HasColumnType("DateTime")
+                        .HasColumnName("bill_date");
+
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Ruc")
+                        .HasColumnType("int")
+                        .HasColumnName("ruc");
+
+                    b.HasKey("BillId");
+
+                    b.HasIndex("ClientId");
+
+                    b.ToTable("bill");
                 });
 
             modelBuilder.Entity("NutricareApp.Entities.Client", b =>
@@ -96,7 +158,7 @@ namespace NutricareApp.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(60)
                         .IsUnicode(false)
-                        .HasColumnType("char(60)")
+                        .HasColumnType("varchar(60)")
                         .HasColumnName("password");
 
                     b.Property<string>("Username")
@@ -185,7 +247,7 @@ namespace NutricareApp.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(60)
                         .IsUnicode(false)
-                        .HasColumnType("char(60)")
+                        .HasColumnType("varchar(60)")
                         .HasColumnName("password");
 
                     b.Property<string>("Username")
@@ -198,6 +260,100 @@ namespace NutricareApp.Data.Migrations
                     b.HasKey("NutritionistId");
 
                     b.ToTable("nutritionist");
+                });
+
+            modelBuilder.Entity("NutricareApp.Entities.PaymentMethod", b =>
+                {
+                    b.Property<int>("PaymentMethodId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("payment_method_id")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BillingAddress")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("billing_address");
+
+                    b.Property<string>("BillingAddressLine2")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(200)")
+                        .HasColumnName("billing_address_line2");
+
+                    b.Property<long>("CardNumber")
+                        .HasColumnType("bigint")
+                        .HasColumnName("card_number");
+
+                    b.Property<string>("CardType")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("card_type");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("city");
+
+                    b.Property<int>("ClientId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(50)")
+                        .HasColumnName("country");
+
+                    b.Property<int>("ExpirationDateMonth")
+                        .HasColumnType("int")
+                        .HasColumnName("expiration_date_month");
+
+                    b.Property<int>("ExpirationDateYear")
+                        .HasColumnType("int")
+                        .HasColumnName("expiration_date_year");
+
+                    b.Property<string>("OwnerFirstName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("owner_first_name");
+
+                    b.Property<string>("OwnerLastName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("owner_last_name");
+
+                    b.Property<int>("PhoneNumber")
+                        .HasColumnType("int")
+                        .HasColumnName("phone_number");
+
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .IsUnicode(false)
+                        .HasColumnType("varchar(20)")
+                        .HasColumnName("postal_code");
+
+                    b.Property<int>("SecurityCode")
+                        .HasColumnType("int")
+                        .HasColumnName("security_code");
+
+                    b.HasKey("PaymentMethodId");
+
+                    b.HasIndex("ClientId");
+
+                    b.ToTable("payment_method");
                 });
 
             modelBuilder.Entity("NutricareApp.Entities.Professionalprofile", b =>
@@ -245,9 +401,9 @@ namespace NutricareApp.Data.Migrations
                         .HasColumnType("varchar(250)")
                         .HasColumnName("description");
 
-                    b.Property<int>("Favorite")
+                    b.Property<int>("Favorites")
                         .HasColumnType("int")
-                        .HasColumnName("favorite");
+                        .HasColumnName("favorites");
 
                     b.Property<string>("Ingredients")
                         .IsRequired()
@@ -351,19 +507,49 @@ namespace NutricareApp.Data.Migrations
                     b.ToTable("specialty");
                 });
 
-            modelBuilder.Entity("NutricareApp.Entities.SpecialtyProfile", b =>
+            modelBuilder.Entity("ProfessionalprofileSpecialty", b =>
                 {
-                    b.Property<int>("SpecialtyId")
+                    b.Property<int>("ProfessionalprofilesProfessionalprofileId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProfessionalProfileId")
+                    b.Property<int>("SpecialtiesSpecialtyId")
                         .HasColumnType("int");
 
-                    b.HasKey("SpecialtyId", "ProfessionalProfileId");
+                    b.HasKey("ProfessionalprofilesProfessionalprofileId", "SpecialtiesSpecialtyId");
 
-                    b.HasIndex("ProfessionalProfileId");
+                    b.HasIndex("SpecialtiesSpecialtyId");
 
-                    b.ToTable("specialty_professional_profile");
+                    b.ToTable("ProfessionalprofileSpecialty");
+                });
+
+            modelBuilder.Entity("ClientRecipe", b =>
+                {
+                    b.HasOne("NutricareApp.Entities.Client", null)
+                        .WithMany()
+                        .HasForeignKey("ClientsClientId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NutricareApp.Entities.Recipe", null)
+                        .WithMany()
+                        .HasForeignKey("RecipesRecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("DietRecipe", b =>
+                {
+                    b.HasOne("NutricareApp.Entities.Diet", null)
+                        .WithMany()
+                        .HasForeignKey("DietsDietId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NutricareApp.Entities.Recipe", null)
+                        .WithMany()
+                        .HasForeignKey("RecipesRecipeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("NutricareApp.Entities.Appointment", b =>
@@ -376,11 +562,8 @@ namespace NutricareApp.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("NutricareApp.Entities.Diet", "Diet")
-                        .WithMany("Appointments")
-                        .HasForeignKey("DietId")
-                        .HasConstraintName("fk_diet_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithOne("Appointment")
+                        .HasForeignKey("NutricareApp.Entities.Appointment", "DietId");
 
                     b.HasOne("NutricareApp.Entities.Nutritionist", "Nutritionist")
                         .WithMany("Appointments")
@@ -394,6 +577,30 @@ namespace NutricareApp.Data.Migrations
                     b.Navigation("Diet");
 
                     b.Navigation("Nutritionist");
+                });
+
+            modelBuilder.Entity("NutricareApp.Entities.Bill", b =>
+                {
+                    b.HasOne("NutricareApp.Entities.Client", "Client")
+                        .WithMany("Bills")
+                        .HasForeignKey("ClientId")
+                        .HasConstraintName("fk_client_id3")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Client");
+                });
+
+            modelBuilder.Entity("NutricareApp.Entities.PaymentMethod", b =>
+                {
+                    b.HasOne("NutricareApp.Entities.Client", "Client")
+                        .WithMany("PaymentMethods")
+                        .HasForeignKey("ClientId")
+                        .HasConstraintName("fk_client_id2")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Client");
                 });
 
             modelBuilder.Entity("NutricareApp.Entities.Professionalprofile", b =>
@@ -432,33 +639,33 @@ namespace NutricareApp.Data.Migrations
                     b.Navigation("Nutritionist");
                 });
 
-            modelBuilder.Entity("NutricareApp.Entities.SpecialtyProfile", b =>
+            modelBuilder.Entity("ProfessionalprofileSpecialty", b =>
                 {
-                    b.HasOne("NutricareApp.Entities.Professionalprofile", "Professionalprofile")
-                        .WithMany("SpecialtyProfiles")
-                        .HasForeignKey("ProfessionalProfileId")
+                    b.HasOne("NutricareApp.Entities.Professionalprofile", null)
+                        .WithMany()
+                        .HasForeignKey("ProfessionalprofilesProfessionalprofileId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NutricareApp.Entities.Specialty", "Specialty")
-                        .WithMany("SpecialtyProfiles")
-                        .HasForeignKey("SpecialtyId")
+                    b.HasOne("NutricareApp.Entities.Specialty", null)
+                        .WithMany()
+                        .HasForeignKey("SpecialtiesSpecialtyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Professionalprofile");
-
-                    b.Navigation("Specialty");
                 });
 
             modelBuilder.Entity("NutricareApp.Entities.Client", b =>
                 {
                     b.Navigation("Appointments");
+
+                    b.Navigation("Bills");
+
+                    b.Navigation("PaymentMethods");
                 });
 
             modelBuilder.Entity("NutricareApp.Entities.Diet", b =>
                 {
-                    b.Navigation("Appointments");
+                    b.Navigation("Appointment");
                 });
 
             modelBuilder.Entity("NutricareApp.Entities.Nutritionist", b =>
@@ -470,16 +677,6 @@ namespace NutricareApp.Data.Migrations
                     b.Navigation("Recipes");
 
                     b.Navigation("Recommendations");
-                });
-
-            modelBuilder.Entity("NutricareApp.Entities.Professionalprofile", b =>
-                {
-                    b.Navigation("SpecialtyProfiles");
-                });
-
-            modelBuilder.Entity("NutricareApp.Entities.Specialty", b =>
-                {
-                    b.Navigation("SpecialtyProfiles");
                 });
 #pragma warning restore 612, 618
         }

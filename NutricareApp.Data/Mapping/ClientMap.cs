@@ -35,7 +35,6 @@ namespace NutricareApp.Data.Mapping
                 .IsUnicode(false);
             builder.Property(c => c.Password)
                 .HasColumnName("password")
-                .HasColumnType("char")
                 .HasMaxLength(60)
                 .IsUnicode(false);
             builder.Property(c => c.CreatedAt)

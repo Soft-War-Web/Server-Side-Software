@@ -34,7 +34,25 @@ namespace NutricareApp.Web.Controllers
                 Name = c.Name,
                 Description = c.Description,
                 Preparation = c.Preparation,
-                Ingredients = c.Ingredients
+                Ingredients = c.Ingredients,
+                Favorites = c.Favorites
+            });
+        }
+
+        [HttpGet("[action]/{NutritionistId}")]
+        public async Task<IEnumerable<RecipeModel>> GetRecipesFromNutritionist([FromRoute] int NutritionistId)
+        {
+            var recipeList = await _context.Recipes.ToListAsync();
+            var recipesNutritionist = recipeList.Where(r => r.NutritionistId == NutritionistId);
+            return recipesNutritionist.Select(c => new RecipeModel
+            {
+                NutritionistId = c.NutritionistId,
+                RecipeId = c.RecipeId,
+                Name = c.Name,
+                Description = c.Description,
+                Preparation = c.Preparation,
+                Ingredients = c.Ingredients,
+                Favorites = c.Favorites
             });
         }
 
@@ -56,7 +74,8 @@ namespace NutricareApp.Web.Controllers
                 Name = recipe.Name,
                 Description = recipe.Description,
                 Preparation = recipe.Preparation,
-                Ingredients = recipe.Ingredients
+                Ingredients = recipe.Ingredients,
+                Favorites = recipe.Favorites
             });
         }
 
@@ -81,6 +100,8 @@ namespace NutricareApp.Web.Controllers
             recipe.Description = model.Description;
             recipe.Preparation = model.Preparation;
             recipe.Ingredients = model.Ingredients;
+            recipe.LastModification = DateTime.Now;
+            recipe.Favorites = model.Favorites;
 
             try
             {
@@ -106,6 +127,7 @@ namespace NutricareApp.Web.Controllers
             {
                 NutritionistId = model.NutritionistId,
                 Name = model.Name,
+                Favorites = 0,
                 Description = model.Description,
                 Preparation = model.Preparation,
                 Ingredients = model.Ingredients,

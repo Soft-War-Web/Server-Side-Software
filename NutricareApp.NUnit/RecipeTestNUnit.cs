@@ -9,7 +9,6 @@ using System.Text;
 using NutricareApp.Web.Controllers;
 using NutricareApp.Web.Models;
 using System.Threading.Tasks;
-using System;
 using Microsoft.AspNetCore.Mvc;
 
 namespace NutricareApp.NUnit
@@ -27,10 +26,10 @@ namespace NutricareApp.NUnit
             Nutritionist nutritionist = new Nutritionist();
             _recipes = new List<Recipe>
             {
-                new Recipe { RecipeId = 1, NutritionistId = 1, CreatedAt = DateTime.Parse("2021-06-05T03:49:49.450Z"), Description = "receta de chaufa bajo en calorías", Favorite = 150, Ingredients = "ingredientes", LastModification = DateTime.Parse("2021-06-05T03:49:49.450Z"), Name = "Chaufa bajo en calorías", Preparation = "preparation"},
-                new Recipe { RecipeId = 2, NutritionistId = 2, CreatedAt = DateTime.Parse("2021-06-05T03:49:49.450Z"), Description = "receta de chaufa bajo en calorías", Favorite = 150, Ingredients = "ingredientes", LastModification = DateTime.Parse("2021-06-05T03:49:49.450Z"), Name = "Chaufa bajo en calorías", Preparation = "preparation"},
-                new Recipe { RecipeId = 3, NutritionistId = 3, CreatedAt = DateTime.Parse("2021-06-05T03:49:49.450Z"), Description = "receta de chaufa bajo en calorías", Favorite = 150, Ingredients = "ingredientes", LastModification = DateTime.Parse("2021-06-05T03:49:49.450Z"), Name = "Chaufa bajo en calorías", Preparation = "preparation"},
-                new Recipe { RecipeId = 4, NutritionistId = 4, CreatedAt = DateTime.Parse("2021-06-05T03:49:49.450Z"), Description = "receta de chaufa bajo en calorías", Favorite = 150, Ingredients = "ingredientes", LastModification = DateTime.Parse("2021-06-05T03:49:49.450Z"), Name = "Chaufa bajo en calorías", Preparation = "preparation"}
+                new Recipe { RecipeId = 1, NutritionistId = 1, CreatedAt = DateTime.Parse("2021-06-05T03:49:49.450Z"), Description = "receta de chaufa bajo en calorías", Favorites = 150, Ingredients = "ingredientes", LastModification = DateTime.Parse("2021-06-05T03:49:49.450Z"), Name = "Chaufa bajo en calorías", Preparation = "preparation"},
+                new Recipe { RecipeId = 2, NutritionistId = 2, CreatedAt = DateTime.Parse("2021-06-05T03:49:49.450Z"), Description = "receta de chaufa bajo en calorías", Favorites = 150, Ingredients = "ingredientes", LastModification = DateTime.Parse("2021-06-05T03:49:49.450Z"), Name = "Chaufa bajo en calorías", Preparation = "preparation"},
+                new Recipe { RecipeId = 3, NutritionistId = 3, CreatedAt = DateTime.Parse("2021-06-05T03:49:49.450Z"), Description = "receta de chaufa bajo en calorías", Favorites = 150, Ingredients = "ingredientes", LastModification = DateTime.Parse("2021-06-05T03:49:49.450Z"), Name = "Chaufa bajo en calorías", Preparation = "preparation"},
+                new Recipe { RecipeId = 4, NutritionistId = 4, CreatedAt = DateTime.Parse("2021-06-05T03:49:49.450Z"), Description = "receta de chaufa bajo en calorías", Favorites = 150, Ingredients = "ingredientes", LastModification = DateTime.Parse("2021-06-05T03:49:49.450Z"), Name = "Chaufa bajo en calorías", Preparation = "preparation"}
             };
         }
 

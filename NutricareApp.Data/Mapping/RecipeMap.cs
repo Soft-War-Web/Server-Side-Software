@@ -20,7 +20,7 @@ namespace NutricareApp.Data.Mapping
             builder.Property(c => c.Description).HasColumnName("description").HasMaxLength(250).IsUnicode(false);
             builder.Property(c => c.Preparation).HasColumnName("preparation").HasMaxLength(500);
             builder.Property(c => c.Ingredients).HasColumnName("ingredients").HasMaxLength(500);
-            builder.Property(c => c.Favorite).HasColumnName("favorite").HasColumnType("int");
+            builder.Property(c => c.Favorites).HasColumnName("favorites").HasColumnType("int");
             builder.Property(c => c.CreatedAt).HasColumnName("created_At").HasColumnType("DateTime");
             builder.Property(c => c.LastModification).HasColumnName("last_modification").HasColumnType("DateTime");
             //FK con nutritionist

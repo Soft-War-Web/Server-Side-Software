@@ -24,7 +24,6 @@ namespace NutricareApp.Data.Mapping
                 .IsUnicode(false);
             builder.Property(c => c.Password)
                 .HasColumnName("password")
-                .HasColumnType("char")
                 .HasMaxLength(60)
                 .IsUnicode(false);
             builder.Property(c => c.FirstName)
@@ -50,11 +49,6 @@ namespace NutricareApp.Data.Mapping
             builder.Property(c => c.CreatedAt)
                 .HasColumnName("created_at")
                 .HasColumnType("DateTime");
-            /*builder.HasOne<Professionalprofile>(c => c.ProfessionalProfile)
-                .WithOne(c => c.Nutritionist)
-                .HasForeignKey<Professionalprofile>(c => c.ProfessionalprofileId)
-                .HasConstraintName("fk_professional_id")
-                .IsRequired(true);*/
         }
     }
 }

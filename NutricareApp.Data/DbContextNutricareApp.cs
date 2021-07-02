@@ -31,7 +31,9 @@ namespace NutricareApp.Data
 
         public DbSet<Appointment> Appointments { get; set; }
 
-        public DbSet<SpecialtyProfile> SpecialtyProfiles { get; set; }
+        public DbSet<Bill> Bills { get; set; }
+
+        public DbSet<PaymentMethod> PaymentMethods { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -44,7 +46,8 @@ namespace NutricareApp.Data
             modelBuilder.ApplyConfiguration(new ProfessionalprofileMap());
             modelBuilder.ApplyConfiguration(new DietMap());
             modelBuilder.ApplyConfiguration(new AppointmentMap());
-            modelBuilder.ApplyConfiguration(new SpecialtyProfileMap());
+            modelBuilder.ApplyConfiguration(new BillMap());
+            modelBuilder.ApplyConfiguration(new PaymentMethodMap());
         }
     }
 }

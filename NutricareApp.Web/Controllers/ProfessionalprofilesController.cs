@@ -55,6 +55,25 @@ namespace NutricareApp.Web.Controllers
             });
         }
 
+        [HttpGet("[action]/{NutritionistId}")]
+        public async Task<IActionResult> GetProfessionalprofileByNutritionist([FromRoute] int NutritionistId)
+        {
+            var profesionalprofilelist = await _context.Professionalprofiles.ToListAsync();
+            Professionalprofile professionalprofile = profesionalprofilelist.Single(p => p.NutritionistId == NutritionistId);
+
+            if (professionalprofile == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(new ProfessionalprofileModel
+            {
+                ProfessionalprofileId = professionalprofile.ProfessionalprofileId,
+                NutritionistId = professionalprofile.NutritionistId,
+                ProfessionalExperienceDescription = professionalprofile.ProfessionalExperienceDescription
+            });
+        }
+
         // PUT: api/Professionalprofiles/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("[action]")]
@@ -109,6 +128,54 @@ namespace NutricareApp.Web.Controllers
                 await _context.SaveChangesAsync(); //Se guarda en la BD (_context)
             }
             catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            return Ok();
+        }
+
+        [HttpPut("[action]/{ProfessionalProfileId}/{SpecialtyId}")]
+        public async Task<IActionResult> AddSpecialty([FromRoute] int ProfessionalProfileId, [FromRoute] int SpecialtyId)
+        {
+            var professionalprofile = await _context.Professionalprofiles.Include(p => p.Specialties).SingleAsync(p => p.ProfessionalprofileId == ProfessionalProfileId);
+            var specialty = await _context.Specialties.SingleAsync(s => s.SpecialtyId == SpecialtyId);
+            if (professionalprofile == null || specialty == null)
+            {
+                return NotFound();
+            }
+
+            professionalprofile.Specialties.Add(specialty);
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            return Ok();
+        }
+
+        [HttpPut("[action]/{ProfessionalProfileId}/{SpecialtyId}")]
+        public async Task<IActionResult> RemoveSpecialty([FromRoute] int ProfessionalProfileId, [FromRoute] int SpecialtyId)
+        {
+            var professionalprofile = await _context.Professionalprofiles.Include(p => p.Specialties).SingleAsync(p => p.ProfessionalprofileId == ProfessionalProfileId);
+            var specialty = await _context.Specialties.SingleAsync(s => s.SpecialtyId == SpecialtyId);
+            if (professionalprofile == null || specialty == null)
+            {
+                return NotFound();
+            }
+
+            professionalprofile.Specialties.Remove(specialty);
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException e)
             {
                 return BadRequest(e.Message);
             }

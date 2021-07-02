@@ -12,11 +12,11 @@ namespace NutricareApp.Web.Models
         public int NutritionistId { get; set; }
 
         [Required(ErrorMessage = "Debe incluir el name de la recommendacion")]
-        [StringLength(50, MinimumLength = 5, ErrorMessage = "El name de la recommendacion debe tener de 5 a 50 caracteres")]
+        [StringLength(50, ErrorMessage = "El name de la recommendacion debe tener hasta 50 caracteres")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Debe incluir la descripcion de la recommendacion")]
-        [StringLength(250, MinimumLength = 5, ErrorMessage = "La descripcion de la recommendacion debe tener menos de 250 caracteres")]
+        [StringLength(250, ErrorMessage = "La descripcion de la recommendacion debe tener menos de 250 caracteres")]
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Debe incluir la fecha de creación de la recommendacion")]

@@ -11,7 +11,6 @@ namespace NutricareApp.Data.Mapping
 {
     public class SpecialtyMap : IEntityTypeConfiguration<Specialty>
     {
-
         public void Configure(EntityTypeBuilder<Specialty> builder)
         {
             builder.ToTable("specialty")
@@ -29,6 +28,5 @@ namespace NutricareApp.Data.Mapping
                 .HasMaxLength(50)
                 .IsUnicode(false);
         }
-
     }
 }

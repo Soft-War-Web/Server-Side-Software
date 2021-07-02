@@ -35,6 +35,7 @@ namespace NutricareApp.Web.Controllers
                 Username = c.Username,
                 FirstName = c.FirstName,
                 LastName = c.LastName,
+                Password = c.Password,
                 CnpNumber = c.CnpNumber,
                 Email = c.Email
             });
@@ -55,12 +56,49 @@ namespace NutricareApp.Web.Controllers
             return Ok(new NutritionistModel
             {
                 NutritionistId = nutritionist.NutritionistId,
-                //ProfessionalProfileId = nutritionist.ProfessionalProfileId,
                 Username = nutritionist.Username,
                 FirstName = nutritionist.FirstName,
                 LastName = nutritionist.LastName,
+                Password = nutritionist.Password,
                 CnpNumber = nutritionist.CnpNumber,
                 Email = nutritionist.Email
+            });
+        }
+
+        [HttpGet("[action]/{email}")]
+        public async Task<IActionResult> GetNutritionistByEmail([FromRoute] string email)
+        {
+            var nutritionist = await _context.Nutritionists.SingleAsync(c => c.Email == email);
+
+            if (nutritionist == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(new NutritionistModel
+            {
+                NutritionistId = nutritionist.NutritionistId,
+                Username = nutritionist.Username,
+                FirstName = nutritionist.FirstName,
+                LastName = nutritionist.LastName,
+                Password = nutritionist.Password,
+                CnpNumber = nutritionist.CnpNumber,
+                Email = nutritionist.Email
+            });
+        }
+
+        [HttpGet("[action]/{NutritionistId}")]
+        public async Task<IEnumerable<SpecialtyModel>> GetSpecialtiesFromNutritionist([FromRoute] int NutritionistId)
+        {
+            var professionalprofile = await _context.Professionalprofiles
+                                    .Include(d => d.Specialties)
+                                    .FirstOrDefaultAsync(d => d.NutritionistId == NutritionistId);
+            var specialties = professionalprofile.Specialties.ToList();
+            return specialties.Select(c => new SpecialtyModel
+            {
+                SpecialtyId = c.SpecialtyId,
+                SpecialtyName = c.SpecialtyName,
+                InstitutionName = c.InstitutionName
             });
         }
 
@@ -113,7 +151,7 @@ namespace NutricareApp.Web.Controllers
             {
                 //ProfessionalProfileId = model.ProfessionalProfileId,
                 Username = model.Username,
-                Password = model.Password, //Se debe encriptar para que se guarde así en la BD (FALTA)
+                Password = model.Password,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Email = model.Email,

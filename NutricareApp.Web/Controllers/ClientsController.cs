@@ -60,6 +60,45 @@ namespace NutricareApp.Web.Controllers
             });
         }
 
+        [HttpGet("[action]/{email}")]
+        public async Task<IActionResult> GetClientByEmail([FromRoute] string email)
+        {
+            var client = await _context.Clients.SingleAsync(c => c.Email == email);
+
+            if (client == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(new ClientModel
+            {
+                ClientId = client.ClientId,
+                Username = client.Username,
+                Password = client.Password,
+                FirstName = client.FirstName,
+                LastName = client.LastName,
+                Email = client.Email
+            });
+        }
+
+        [HttpGet("[action]/{ClientId}")]
+        public async Task<IEnumerable<RecipeModel>> GetRecipesFromClient([FromRoute] int ClientId)
+        {
+            var diets = await _context.Clients
+                                    .Include(d => d.Recipes)
+                                    .FirstOrDefaultAsync(d => d.ClientId == ClientId);
+            var recipes = diets.Recipes.ToList();
+            return recipes.Select(c => new RecipeModel
+            {
+                RecipeId = c.RecipeId,
+                NutritionistId = c.NutritionistId,
+                Name = c.Name,
+                Ingredients = c.Ingredients,
+                Description = c.Description,
+                Preparation = c.Preparation
+            });
+        }
+
         // PUT: api/Clients/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("[action]")]
@@ -81,6 +120,54 @@ namespace NutricareApp.Web.Controllers
             client.FirstName = model.FirstName;
             client.LastName = model.LastName;
             client.Email = model.Email;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            return Ok();
+        }
+
+        [HttpPut("[action]/{ClientId}/{RecipeId}")]
+        public async Task<IActionResult> AddFavoriteRecipe([FromRoute] int ClientId, [FromRoute] int RecipeId)
+        {
+            var client = await _context.Clients.Include(c => c.Recipes).SingleAsync(c => c.ClientId == ClientId);
+            var recipe = await _context.Recipes.SingleAsync(r => r.RecipeId == RecipeId);
+            if (client == null || recipe == null)
+            {
+                return NotFound();
+            }
+
+            client.Recipes.Add(recipe);
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException e)
+            {
+                return BadRequest(e.Message);
+            }
+
+            return Ok();
+        }
+
+        [HttpPut("[action]/{ClientId}/{RecipeId}")]
+        public async Task<IActionResult> RemoveFavoriteRecipe([FromRoute] int ClientId, [FromRoute] int RecipeId)
+        {
+            var client = await _context.Clients.Include(c => c.Recipes).SingleAsync(c => c.ClientId == ClientId);
+            var recipe = await _context.Recipes.SingleAsync(r => r.RecipeId == RecipeId);
+            if (client == null || recipe == null)
+            {
+                return NotFound();
+            }
+
+            client.Recipes.Remove(recipe);
 
             try
             {

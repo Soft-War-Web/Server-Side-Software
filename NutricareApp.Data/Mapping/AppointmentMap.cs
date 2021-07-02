@@ -39,11 +39,6 @@ namespace NutricareApp.Data.Mapping
                 .HasForeignKey(c => c.NutritionistId)
                 .HasConstraintName("fk_nutritionist_id")
                 .IsRequired(true);
-            builder.HasOne<Diet>(c => c.Diet)
-                .WithMany(c => c.Appointments)
-                .HasForeignKey(c => c.DietId)
-                .HasConstraintName("fk_diet_id")
-                .IsRequired(true);
         }
     }
 }
