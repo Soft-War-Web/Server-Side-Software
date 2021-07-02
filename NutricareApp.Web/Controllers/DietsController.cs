@@ -78,6 +78,26 @@ namespace NutricareApp.Web.Controllers
             });
         }
 
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetLastDiet()
+        {
+            var diet = await _context.Diets.OrderByDescending(a => a.DietId).FirstOrDefaultAsync();
+
+            if (diet == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(new DietModel
+            {
+                DietId = diet.DietId,
+                DietName = diet.DietName,
+                DietDescription = diet.DietDescription,
+                CreatedAt = diet.CreatedAt,
+                Appointment = diet.Appointment
+            });
+        }
+
         // PUT: api/Diets/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("[action]")]

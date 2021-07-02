@@ -72,6 +72,26 @@ namespace NutricareApp.Web.Controllers
             });
         }
 
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetLastAppointment()
+        {
+            var appointment = await _context.Appointments.OrderByDescending(a => a.AppointmentId).FirstOrDefaultAsync();
+
+            if (appointment == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(new AppointmentModel
+            {
+                AppointmentId = appointment.AppointmentId,
+                ClientId = appointment.ClientId,
+                NutritionistId = appointment.NutritionistId,
+                AppointmentDate = appointment.AppointmentDate,
+                NutritionistNotes = appointment.NutritionistNotes
+            });
+        }
+
         [HttpGet("[action]/{fecha1}/{fecha2}")]
         public async Task<IEnumerable<AppointmentModel>> GetAppointmentBetweenDates([FromRoute] string fecha1, [FromRoute] string fecha2)
         {
