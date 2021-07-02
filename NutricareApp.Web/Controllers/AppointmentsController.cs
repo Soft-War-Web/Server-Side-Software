@@ -135,7 +135,8 @@ namespace NutricareApp.Web.Controllers
                 ClientId = c.ClientId,
                 NutritionistId = c.NutritionistId,
                 AppointmentDate = c.AppointmentDate,
-                NutritionistNotes = c.NutritionistNotes
+                NutritionistNotes = c.NutritionistNotes,
+                DietId = (int)c.DietId
             });
         }
 
@@ -157,7 +158,8 @@ namespace NutricareApp.Web.Controllers
                 ClientId = c.ClientId,
                 NutritionistId = c.NutritionistId,
                 AppointmentDate = c.AppointmentDate,
-                NutritionistNotes = c.NutritionistNotes
+                NutritionistNotes = c.NutritionistNotes,
+                DietId = (int)c.DietId
             });
         }
 
